@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+
+
+.rule {
+	background-color: #000000 !important; /* headers (and hardrule) */ 
+}
+
+#background {
+	background-color: #000000 !important; /* sub-headers */ 
+	color: #ffffff !important;
+}
+
+#icon	{
+	color: #000000 !important; /*icons */
+}
+	
+.rounded_corner {
+	border-radius:5px 
+}
+

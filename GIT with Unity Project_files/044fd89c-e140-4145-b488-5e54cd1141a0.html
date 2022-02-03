@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)https://web.microsoftstream.com/embed/video/044fd89c-e140-4145-b488-5e54cd1141a0?autoplay=false&showinfo=true -->
+<html style="overflow:hidden;" lang="en" role="main"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-merge-styles="true"></style><style data-merge-styles="true"></style><style data-merge-styles="true"></style><style data-merge-styles="true"></style><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style><style class="vjs-styles-dimensions">
+                .vjs_video_3-dimensions {
+                        width: 1920px;
+                        height: 1080px;
+                    }
+
+                .vjs_video_3-dimensions.vjs-fluid {
+                        padding-top: 56.25%;
+                    }
+            </style>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#C30052">
+    <title>Microsoft Stream</title>
+    <style>
+        .full-overlay {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .stream-loading-container .loading-spinner {
+            animation: spin 1.3s infinite cubic-bezier(0.53, 0.21, 0.29, 0.67);
+            width: 57px;
+            height: 57px;
+        }
+
+        .play-button:focus .play-button-arrow,
+        .play-button-container:hover .play-button-arrow {
+            filter: drop-shadow(0px 6.4px 14.4px rgb(0, 0, 0, 0.22));
+        }
+
+        .play-button-arrow {
+            transition-duration: 0.15s;
+            filter: drop-shadow(0px 1.6px 3.6px rgba(0, 0, 0, 0.13));
+        }
+
+        /* Size is 20% of width or 14% of height, whichever is smaller */
+        @media screen and (max-aspect-ratio: 14/20) {
+            .play-button-arrow {
+                width: 20vw;
+            }
+            .play-button:focus .play-button-arrow,
+            .play-button-container:hover .play-button-arrow {
+                width: 22vw;
+            }
+        }
+        @media screen and (min-aspect-ratio: 14/20) {
+            .play-button-arrow {
+                height: 14vh;
+            }
+            .play-button:focus .play-button-arrow,
+            .play-button-container:hover .play-button-arrow {
+                height: 15.4vh;
+            }
+        }
+
+        .play-button {
+            cursor: pointer;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .play-button:focus {
+            outline: 0;
+        }
+      
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+
+        [id^="adal"] {
+            display: none;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            margin: 0px;
+        }
+
+        #root {
+            height: 100%;
+        }
+
+        .video-meta-overlay-main {
+            display: none;
+        }
+
+        #browserError,#CompatibilityViewError {
+            padding: 15px;
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100%;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #212121;
+            color: #ffffff;
+            font-family: SegoeUI, 'Stream Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        #browserError .error-title,#CompatibilityViewError .error-title {
+            font-size: 25px;
+        }
+
+        #browserError .error-message,#CompatibilityViewError .error-message {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        #browserError a,#CompatibilityViewError a {
+            text-decoration: underline;
+        }
+
+        #browserError a:active,#CompatibilityViewError a:active {
+            color: #A19F9D;
+        }
+
+        #browserError a:hover,#CompatibilityViewError a:hover {
+            color: #BEBBB8;
+        }
+
+        #browserError a:link,#CompatibilityViewError a:link, #browserError a:visited,#CompatibilityViewError a:visited {
+            color: #D2D0CE;
+        }
+
+        #browserError .error-button-container,#CompatibilityViewError .error-button-container {
+            margin-top: 20px;
+        }
+
+        #browserError button,#CompatibilityViewError button {
+            background-color: #c20052;
+            border: none;
+            color: #ffffff;
+            height: 32px;
+            border-radius: 2px;
+            font-size: 14px;
+            padding: 0 22px 0px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+    
+    <style>
+        .stream-loading-container {
+            background: white;
+        }
+
+        .play-button-container {
+            display: none;
+        }
+    </style>
+
+    <script>
+        window.isEmbed = true;
+    </script>
+    
+<style>
+    @font-face {
+      font-family: Stream Segoe UI;
+      src: url('https://amsglob0cdnstream13.azureedge.net/embed/7.0.4/production/media/segoeui.0810f2c3.woff');
+      font-weight: normal;
+      font-style: normal;
+    }</style><style>
+    .embedVideoMain {
+      font-family: 'Segoe UI', 'Stream Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    .hide {
+      display: none !important;
+    }</style><script charset="utf-8" src="./defThinRes.chunk.js.download"></script><script charset="utf-8" src="./pRes.chunk.js.download"></script><script charset="utf-8" src="./aRes7.chunk.js.download"></script><script charset="utf-8" src="./vendors_thinplayer.chunk.js.download"></script><script charset="utf-8" src="./thinplayer.chunk.js.download"></script><link rel="stylesheet" type="text/css" href="./189.player-skin-react-thin.min.css"><script charset="utf-8" src="./pskin.chunk.js.download"></script><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style data-load-themed-styles="true"></style><style>.azuremediaplayer .vjs-player .vjs-tech:focus { border: 2px solid white }</style><script charset="utf-8" src="./playerCommands.chunk.js.download"></script><script charset="utf-8" src="./0.chunk.js.download"></script><script charset="utf-8" src="./vendors_errorBox_logScr_redirectBox_repIssue_survey_thinoverlay_tp.chunk.js.download"></script><script charset="utf-8" src="./thinoverlay.chunk.js.download"></script><script charset="utf-8" src="./vendors_AtMentionLazy_LPPLazy_sharedCommentsLazy_tp.chunk.js.download"></script><script charset="utf-8" src="./vendors_tp.chunk.js.download"></script><script charset="utf-8" src="./tp.chunk.js.download"></script><script charset="utf-8" src="./vidEvt.chunk.js.download"></script><script charset="utf-8" src="./strings-tspt.chunk.js.download"></script><script charset="utf-8" src="./formsPlugin.chunk.js.download"></script></head>
+
+<body class="ms-Fabric--isFocusHidden" style="background: rgb(0, 0, 0);">
+    <div id="browserError" class="error-container">
+        <div class="error-title">
+            <span>The current browser or settings aren't supported</span>
+        </div>
+        <div class="error-message">
+            <span>Please try a different browser to play this video .</span><a href="https://docs.microsoft.com/en-us/stream/faq#what-browsers-does-microsoft-stream-support" target="_blank">Learn more</a>
+        </div>
+    </div>
+
+    <div id="CompatibilityViewError" class="error-container">
+        <div class="error-title">
+            <span>It looks like there’s a problem</span>
+        </div>
+        <div class="error-message">
+            <span>This page cannot be loaded on this site. Please open in a new window or try a different browser to play this video. </span><a href="https://docs.microsoft.com/en-us/stream/faq#what-browsers-does-microsoft-stream-support" target="_blank">Learn more</a>
+        </div>
+        <div class="error-button-container">
+            <button type="button" class="error-button" onclick="window.open(window.location.href, &#39;_blank&#39;)">Open in new window</button>
+        </div>
+    </div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="streamLoading" class="stream-loading-container full-overlay" style="display: none;">
+        <svg class="loading-spinner" enable-background="new 0 0 28 28" version="1.1" viewBox="0 0 28 28" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <style type="text/css">
+                .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#EEB9CF;}
+                .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#C30052;}
+            </style>
+            <path class="st0" d="m17.6 27.5c-7.5 2-15.1-2.4-17.1-9.9s2.4-15.1 9.9-17.1 15.1 2.4 17.1 9.9-2.4 15.1-9.9 17.1zm-0.2-0.9c6.9-1.9 11-9 9.2-15.9s-9-11-15.9-9.2-11 9-9.2 15.9 8.9 11 15.9 9.2z"></path>
+            <path class="st1" d="m17.6 0.5-0.3 1c4.3 1.2 7.9 4.5 9.2 9.2 0.8 2.9 0.5 5.8-0.6 8.4l1 0.3c1.1-2.7 1.4-5.8 0.6-8.9-1.3-5.1-5.2-8.8-9.9-10z"></path>
+        </svg>
+    </div>
+    <div id="playButtonContainer" class="play-button-container full-overlay" style="display: none;">
+        <button id="playButton" class="play-button" type="button" aria-label="Play Video">
+            <svg class="play-button-arrow" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27.5956 12.1269L102.621 51.1447C107.514 53.6892 109.416 59.716 106.87 64.606C105.924 66.4243 104.44 67.9071 102.621 68.8532L27.5956 107.871C22.7031 110.415 16.6732 108.514 14.1275 103.624C13.3867 102.201 13 100.621 13 99.0168V20.9811C13 15.4687 17.471 11 22.9862 11C24.3617 11 25.7198 11.284 26.9762 11.8313L27.5956 12.1269Z" fill="white"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div id="root" class="embedVideoMain" style="display: block;"><div poster="" style="width: 100%; height: 100%; font-size: 562px;" id="vjs_video_3" preload="auto" playsinline="" class="azuremediaplayer amp-big-play-centered amp-stream-skin vjs_video_3-dimensions amp-size-m vjs-user-active" tabindex="-1"><div tabindex="-1" class="vjs-controls-enabled vjs-player vjs-workinghover vjs-has-started vjs-paused" aria-label="video player, press space key to play/pause the video"><div><video id="vjs_video_3_AzureHtml5JS_api_9979" class="vjs-tech" oncontextmenu="return false;" tabindex="0" aria-hidden="true" preload="auto" aria-label="video player, press space key to play/pause the video" src="blob:https://web.microsoftstream.com/f99e91c7-adcf-4bcf-b1d9-afaedd3179fb"></video></div><div></div><div class="vjs-fullscreen-outline outline-enabled-control"></div><div class="vjs-poster" tabindex="-1" aria-live="off"><span class="vjs-poster-span" tabindex="-1"></span><img src="./MS0yY3J3bnFpeW13bnphNmJnbmdoZTZ4c3FkZV8xXzY0MHgzNjAucG5n" crossorigin="use-credentials" style="display: inline;" width="100%" height="auto" alt="" role="presentation"></div><div class="vjs-text-track-display" aria-live="off" aria-atomic="true"></div><div class="vjs-loading-spinner" dir="ltr"><span></span></div><button class="vjs-big-play-button " type="button" aria-live="off"><span class="vjs-control-text">Play Video</span></button><div class="vjs-control-bar" dir="ltr" role="region" aria-label="Video controls"><div class="amp-controlbaricons-left"><button class="vjs-play-control vjs-control vjs-button outline-enabled-control vjs-paused" type="button" aria-live="off" style="cursor:pointer"><span class="vjs-control-text" aria-live="off">Play</span></button><div class="vjs-live-control vjs-control vjs-hidden outline-enabled-control" tabindex="0" role="button" aria-live="off" aria-label="LIVE" style="cursor:pointer"><span class="vjs-control-text" aria-live="off"></span><div class="vjs-live-display" aria-live="off"><span class="vjs-control-text">Stream Type</span>LIVE</div></div><div class="vjs-volume-control" aria-expanded="false"><button class="vjs-mute-control vjs-control vjs-button outline-enabled-control vjs-vol-3" type="button" aria-live="off"><span class="vjs-control-text" aria-live="off">Mute</span></button><div class="vjs-menu"><div class="vjs-menu-content" style="overflow: visible;"><div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" aria-label="volume level" aria-valuetext="100.00%"><div class="vjs-volume-level" style="width: 100%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-control outline-enabled-control" style="left: 94%;"><span class="vjs-control-text" aria-live="polite" style="z-index:16;left:-0.75em">100%</span></div></div></div></div></div><div class="vjs-current-time vjs-time-control vjs-control outline-enabled-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time</span> 5:11</div><div class="amp-livetimeindicator">LIVE</div></div><div class="vjs-time-control vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-control vjs-control outline-enabled-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time</span> 7:16</div></div><div class="vjs-remaining-time vjs-time-control vjs-control outline-enabled-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time</span> -2:04</div></div></div><div class="amp-controlbaricons-middle"><div class="vjs-progress-control vjs-control outline-enabled-control" tabindex="-1"><div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="70.88" aria-valuemin="0" aria-valuemax="100" aria-label="progress bar" aria-valuetext="00:05:09"><div class="vjs-load-progress " style="width: 71.5596%;"><span class="vjs-control-text" style="left: 73.0769%; width: 26.9231%;"><span>Loaded</span>: 0%</span></div><div class="vjs-mouse-display" style="left: 455px;"><span class="amp-time-tooltip" style="left: 0px;">6:00</span><span class="amp-time-tooltip-pointer" style="left: 0px;"></span></div><div class="vjs-play-progress vjs-slider-bar " data-current-time="5:11" style="width: 71.53%;"><span class="vjs-control-text"><span>Progress</span>: 0%</span></div><div class="vjs-slider-handle " style="left: 71.53%;"><div class="vjs-mouse-display-seek-handle" style="left: 0px;"><span class="amp-time-tooltip">5:11</span><span class="amp-time-tooltip-pointer"></span></div><span class="vjs-control-text">Seekbar Handle</span></div></div></div></div><div class="amp-controlbaricons-right"><button class="amp-search-icon vjs-control vjs-button outline-enabled-control" type="button" aria-live="off"><span class="vjs-control-text" aria-live="off">Search Transcript</span></button><button class="amp-caption-toggle vjs-control vjs-button outline-enabled-control" type="button" aria-live="off" aria-relevant="removals" aria-pressed="false" aria-label="Captions are currently off, Caption toggle"><span class="vjs-control-text" aria-live="off">Captions</span></button><div class="amp-playbackspeed-100x-icon vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-control vjs-button outline-enabled-control" tabindex="0" role="button" aria-live="off" aria-expanded="false" aria-haspopup="true"><div class="vjs-menu" role="presentation"><ul class="vjs-menu-content" role="menu"><li class="amp-menu-header" tabindex="-1" role="presentation">Playback Speed</li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="false">2x</li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="false">1.8x</li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="false">1.5x</li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="false">1.2x</li><li class="vjs-menu-item vjs-selected outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="true">1x</li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="" aria-checked="false">0.5x</li></ul></div><span class="vjs-control-text" aria-live="off">Playback Speed</span></div><div class="vjs-moreoptions-dialog vjs-modal-overlay vjs-hidden" tabindex="-1" role="presentation" aria-labelledby="TTsettingsMoreOptionsDialogLabel-vjs_video_3_component_396" aria-describedby="TTMoreOptionsDialogDescription-vjs_video_3_component_396" style="width: 0px; height: 0px;"><div class="vjs-settings-panel" tabindex="-1"><div class="vjs-settings-panel-child outline-enabled-control" tabindex="-1"><div class="vjs-menu vjs-main-menu" role="presentation" style="opacity: 1;"><ul class="vjs-menu-content" role="menu"><div class="vjs-captions-subtitles-button vjs-menu-button vjs-menu-button-popup vjs-button vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-expanded="false" aria-haspopup="true" aria-label="Captions / Subtitles, Off"><span class="vjs-control-text" aria-hidden="true" aria-live="off"></span><div class="vjs-settings-sub-menu-title" aria-hidden="true" aria-live="off">Captions / Subtitles</div><div class="vjs-settings-sub-menu-value" aria-hidden="true" aria-live="off">Off</div></div><div class="amp-captions-settings-button vjs-menu-button vjs-menu-button-popup vjs-button vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-expanded="false" aria-haspopup="true" aria-label="Captions / Subtitles settings"><span class="vjs-control-text" aria-hidden="true" aria-live="off"></span><div class="vjs-settings-sub-menu-title" aria-hidden="true" aria-live="off">Captions / Subtitles settings</div><div class="vjs-settings-sub-menu-value" aria-hidden="true" aria-live="off"></div></div><div class="amp-quality-control vjs-menu-button vjs-menu-button-popup vjs-button vjs-menu-item quality-4 outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-expanded="false" aria-haspopup="true" aria-label="Quality, 1080p-347Kbps"><span class="vjs-control-text" aria-hidden="true" aria-live="off"></span><div class="vjs-settings-sub-menu-title" aria-hidden="true" aria-live="off">Quality</div><div class="vjs-settings-sub-menu-value" aria-hidden="true" aria-live="off">1080p-347Kbps</div></div><div class="amp-caption-toggle vjs-menu-button vjs-menu-button-popup vjs-button vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-expanded="false" aria-haspopup="true" aria-label="Report an issue"><div class="vjs-menu" role="presentation"><ul class="vjs-menu-content" role="menu"></ul></div><span class="vjs-control-text" aria-hidden="true" aria-live="off"></span><div class="vjs-settings-sub-menu-title" aria-hidden="true" aria-live="off">Report an issue</div><div class="vjs-settings-sub-menu-value" aria-hidden="true" aria-live="off"></div></div></ul></div><div class="vjs-settings-sub-menu vjs-hidden" style="margin-right: 0px; opacity: 0;"><div class="vjs-menu vjs-settings-sub-menu" role="presentation"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item vjs-back-button outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-label="Back to main menu"><span class="vjs-back-button-text">Captions / Subtitles</span></li><li class="vjs-menu-item vjs-selected outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="Off" aria-checked="true">Off<span class="vjs-control-text">, selected</span></li><li class="vjs-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="Auto [CC]" aria-checked="false">Auto<span class="vjs-control-text"> </span> CC</li></ul></div></div><div class="vjs-settings-sub-menu vjs-hidden" style="margin-right: 0px; opacity: 0;"><div class="vjs-menu vjs-settings-sub-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item dialog-header vjs-back-button outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-label="Back to main menu"><span class="vjs-back-button-text">Captions / Subtitles settings</span></li><li class="amp-caption-settings-menu amp-non-clickable-element" role="presentation" tabindex="-1">
+        <div class="amp-caption-setting-container">
+            <label class="amp-caption-settings-label full-width-label" id="captions-text-size-vjs_video_3_component_483">Text size: </label>
+            <div class="amp-radio-button-group amp-font-size-group" role="radiogroup" aria-labelledby="captions-text-size-vjs_video_3_component_483">
+                <label class="amp-radio-button amp-font-size" role="radio" aria-labelledby="captions-text-size-small-vjs_video_3_component_483">
+                    <input type="radio" name="fontSize" value="0.75" class="outline-enabled-control" aria-setsize="3" aria-posinset="1">
+                    <span id="captions-text-size-small-vjs_video_3_component_483">Small</span>
+                </label>
+                <label class="amp-radio-button amp-font-size" role="radio" aria-labelledby="captions-text-size-medium-vjs_video_3_component_483">
+                    <input type="radio" name="fontSize" value="1.00" class="outline-enabled-control" aria-setsize="3" aria-posinset="2">
+                    <span id="captions-text-size-medium-vjs_video_3_component_483">Medium</span>
+                </label>
+                <label class="amp-radio-button amp-font-size" role="radio" aria-labelledby="captions-text-size-large-vjs_video_3_component_483">
+                    <input type="radio" name="fontSize" value="1.50" class="outline-enabled-control" aria-setsize="3" aria-posinset="3">
+                    <span id="captions-text-size-large-vjs_video_3_component_483">Large</span>
+                </label>
+            </div>
+
+            <label class="amp-caption-settings-label full-width-label" for="captions-text-color-vjs_video_3_component_483">Text color: 
+                <span class="amp-caption-color-selected-text">Standard</span>
+            </label>
+            <div class="amp-radio-button-group amp-font-color-group" id="caption-text-color-vjs_video_3_component_483" role="radiogroup" aria-label="Text color: ">
+                <label class="amp-radio-button amp-font-color" role="radio">
+                    <input type="radio" name="fontColor" value="whiteBlack" aria-setsize="4" aria-posinset="1" class="amp-font-color-whiteBlack outline-enabled-control" aria-label="Standard">
+                    <span></span>
+                </label>
+                <label class="amp-radio-button amp-font-color" role="radio">
+                    <input type="radio" name="fontColor" value="whiteGray" aria-setsize="4" aria-posinset="2" class="amp-font-color-whiteGray outline-enabled-control" aria-label="Reverse sepia">
+                    <span></span>
+                </label>
+                <label class="amp-radio-button amp-font-color" role="radio">
+                    <input type="radio" name="fontColor" value="blackLightGray" aria-setsize="4" aria-posinset="3" class="amp-font-color-blackLightGray outline-enabled-control" aria-label="Sepia">
+                    <span></span>
+                </label>
+                <label class="amp-radio-button amp-font-color" role="radio">
+                    <input type="radio" name="fontColor" value="blackWhite" aria-setsize="4" aria-posinset="4" class="amp-font-color-blackWhite outline-enabled-control" aria-label="Reverse standard">
+                    <span></span>
+                </label>
+            </div>
+
+            <div class="amp-background-transparency amp-row-with-button">
+                <label class="amp-caption-settings-label" id="captions-background-transparency-label-vjs_video_3_component_483">Background transparency</label>
+                <div class="amp-toggle">
+                    <button type="button" role="button" aria-pressed="false" class="amp-captions-background-transparency outline-enabled-control" aria-labelledby="captions-background-transparency-label-vjs_video_3_component_483"></button>
+                    <span class="toggle-value">Off</span>
+                </div>
+            </div>
+            <div class="amp-caption-settings-reset-container">
+                <button type="button" class="amp-caption-settings-reset amp-caption-settings-label outline-enabled-control amp-caption-settings-reset-disabled" disabled="true">Revert to default settings</button>
+            </div>
+        </div>
+        </li></ul></div></div><div class="vjs-settings-sub-menu vjs-hidden" style="opacity: 0; margin-right: 0px;"><div class="vjs-menu vjs-settings-sub-menu" role="presentation"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item vjs-back-button outline-enabled-control" tabindex="-1" role="menuitem" aria-live="off" aria-label="Back to main menu"><span class="vjs-back-button-text">Quality</span></li><li class="vjs-menu-item vjs-selected amp-menu-item outline-enabled-control" tabindex="-1" role="menuitemcheckbox" aria-live="off" aria-label="1080p-347Kbps" aria-checked="true">1080p-347Kbps<span class="vjs-control-text">, selected</span></li></ul></div></div></div></div></div><div class="amp-more-options-icon vjs-control vjs-button vjs-settings outline-enabled-control" tabindex="0" role="button" aria-live="off" aria-label="Settings" data-return-focus="settingsPanel" aria-haspopup="true" aria-expanded="false"><span class="vjs-control-text" aria-live="off">Settings</span></div><button class="vjs-fullscreen-control vjs-control vjs-button outline-enabled-control" type="button" aria-live="off" style="cursor:pointer" aria-label="Fullscreen"><span class="vjs-control-text" aria-live="off">Fullscreen</span></button><button class="amp-stream-icon vjs-control vjs-button outline-enabled-control" type="button" aria-live="off" aria-label="View in Microsoft Stream"><span class="vjs-control-text" aria-live="off">View in Microsoft Stream</span></button></div></div><div class="vjs-error-display vjs-modal-dialog vjs-hidden " tabindex="-1" aria-describedby="vjs_video_3_component_558_description" aria-hidden="true" aria-label="Modal Window" role="dialog"><p class="vjs-modal-dialog-description vjs-offscreen" id="vjs_video_3_component_558_description">This is a modal window.</p><div class="vjs-modal-dialog-content" role="document" tabindex="0"></div></div><div class="vjs-caption-settings vjs-modal-overlay vjs-hidden" tabindex="-1" role="dialog" aria-labelledby="TTsettingsDialogLabel-vjs_video_3_component_563" aria-describedby="TTsettingsDialogDescription-vjs_video_3_component_563">
+    <div role="document">
+      <div role="heading" aria-level="1" id="TTsettingsDialogLabel-vjs_video_3_component_563" class="vjs-control-text">Captions Settings Dialog</div>
+      <div id="TTsettingsDialogDescription-vjs_video_3_component_563" class="vjs-control-text">Beginning of dialog window. Escape will cancel and close the window.</div>
+      <div class="vjs-tracksettings">
+        <div class="vjs-tracksettings-colors">
+          <fieldset class="vjs-fg-color vjs-tracksetting">
+            <legend>Text</legend>
+            <label class="vjs-label" for="captions-foreground-color-vjs_video_3_component_563">Text color</label>
+            <select id="captions-foreground-color-vjs_video_3_component_563">
+              <option value="#FFF" selected="">White</option>
+              <option value="#000">Black</option>
+              <option value="#F00">Red</option>
+              <option value="#0F0">Green</option>
+              <option value="#00F">Blue</option>
+              <option value="#FF0">Yellow</option>
+              <option value="#F0F">Magenta</option>
+              <option value="#0FF">Cyan</option>
+            </select>
+            <span class="vjs-text-opacity vjs-opacity">
+             <label class="vjs-label" for="captions-foreground-opacity-vjs_video_3_component_563">Text opacity</label>
+              <select id="captions-foreground-opacity-vjs_video_3_component_563">
+                <option value="1" selected="">Opaque</option>
+                <option value="0.5">Semi-Opaque</option>
+              </select>
+            </span>
+          </fieldset>
+          <fieldset class="vjs-bg-color vjs-tracksetting">
+            <legend>Background</legend>
+            <label class="vjs-label" for="captions-background-color-vjs_video_3_component_563">Background Color</label>
+            <select id="captions-background-color-vjs_video_3_component_563">
+              <option value="#000" selected="">Black</option>
+              <option value="#FFF">White</option>
+              <option value="#F00">Red</option>
+              <option value="#0F0">Green</option>
+              <option value="#00F">Blue</option>
+              <option value="#FF0">Yellow</option>
+              <option value="#F0F">Magenta</option>
+              <option value="#0FF">Cyan</option>
+            </select>
+            <span class="vjs-bg-opacity vjs-opacity">
+              <label class="vjs-label" for="captions-background-opacity-vjs_video_3_component_563">Background opacity</label>
+              <select id="captions-background-opacity-vjs_video_3_component_563">
+                <option value="1" selected="">Opaque</option>
+                <option value="0.5">Semi-Transparent</option>
+                <option value="0">Transparent</option>
+              </select>
+            </span>
+          </fieldset>
+          <fieldset class="window-color vjs-tracksetting">
+            <legend>Window</legend>
+            <label class="vjs-label" for="captions-window-color-vjs_video_3_component_563">Window Color</label>
+            <select id="captions-window-color-vjs_video_3_component_563">
+              <option value="#000" selected="">Black</option>
+              <option value="#FFF">White</option>
+              <option value="#F00">Red</option>
+              <option value="#0F0">Green</option>
+              <option value="#00F">Blue</option>
+              <option value="#FF0">Yellow</option>
+              <option value="#F0F">Magenta</option>
+              <option value="#0FF">Cyan</option>
+            </select>
+            <span class="vjs-window-opacity vjs-opacity">
+              <label class="vjs-label" for="captions-window-opacity-vjs_video_3_component_563">Transparency</label>
+              <select id="captions-window-opacity-vjs_video_3_component_563">
+                <option value="0" selected="">Transparent</option>
+                <option value="0.5">Semi-Transparent</option>
+                <option value="1">Opaque</option>
+              </select>
+            </span>
+          </fieldset>
+        </div> <!-- vjs-tracksettings-colors -->
+        <div class="vjs-tracksettings-font">
+          <div class="vjs-font-percent vjs-tracksetting">
+            <label class="vjs-label" for="captions-font-size-vjs_video_3_component_563">Font Size</label>
+            <select id="captions-font-size-vjs_video_3_component_563">
+              <option value="0.50">50%</option>
+              <option value="0.75">75%</option>
+              <option value="1.00" selected="">100%</option>
+              <option value="1.25">125%</option>
+              <option value="1.50">150%</option>
+              <option value="1.75">175%</option>
+              <option value="2.00">200%</option>
+              <option value="3.00">300%</option>
+              <option value="4.00">400%</option>
+            </select>
+          </div>
+          <div class="vjs-edge-style vjs-tracksetting">
+            <label class="vjs-label" for="captions-edge-style-vjs_video_3_component_563">Text Edge Style</label>
+            <select id="captions-edge-style-vjs_video_3_component_563">
+              <option value="none" selected="">None</option>
+              <option value="raised">Raised</option>
+              <option value="depressed">Depressed</option>
+              <option value="uniform">Uniform</option>
+              <option value="dropshadow">Dropshadow</option>
+            </select>
+          </div>
+          <div class="vjs-font-family vjs-tracksetting">
+            <label class="vjs-label" for="captions-font-family-vjs_video_3_component_563">Font Family</label>
+            <select id="captions-font-family-vjs_video_3_component_563">
+              <option value="proportionalSansSerif" selected="">Proportional Sans-Serif</option>
+              <option value="monospaceSansSerif">Monospace Sans-Serif</option>
+              <option value="proportionalSerif">Proportional Serif</option>
+              <option value="monospaceSerif">Monospace Serif</option>
+              <option value="casual">Casual</option>
+              <option value="script">Script</option>
+              <option value="small-caps">Small Caps</option>
+            </select>
+          </div>
+        </div> <!-- vjs-tracksettings-font -->
+        <div class="vjs-tracksettings-controls">
+          <button class="vjs-default-button">Defaults</button>
+          <button class="vjs-done-button">Done</button>
+        </div>
+      </div> <!-- vjs-tracksettings -->
+    </div> <!--  role="document" --></div><p class="vjs-screen-reader-text" id="player-use-for-screen-reader-alert-only0.2732702518095844" role="alert" aria-atomic="true" tabindex="-1"></p><div id="caption-settings-screen-reader" role="status" aria-live="polite" aria-atomic="true" style="width: 1px; height: 1px; margin: -1px; position: absolute;  border: 0; padding: 0px; overflow: hidden; clip: rect(0 0 0 0); clip-path: polygon(0px 0px, 0px 0px, 0px 0px); -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px); white-space: nowrap, opacity: 0; font-size: 0;">All settings have been reverted to their default states</div><div class="vjs-audio-only-overlay-container vjs-hidden" role="region"><div class="vjs-audio-only-overlay-icon"></div></div></div><div class="ms-Layer root-118" data-portal-element="true"><div class="ms-Fabric ms-Layer-content content-120"><div role="dialog" aria-modal="true" class="hiddenPanel-106" style="outline: none;"><div aria-hidden="false" id="embedTranscriptPanel" aria-label="Video Transcript. Type to search, or click on a result to search to that time in the video." class="ms-Panel transcriptContainer-104" role="dialog"><div class="ms-Panel-main main-107"><div aria-hidden="true" tabindex="-1" data-is-visible="true" style="pointer-events: none; position: fixed;"></div><div class="ms-Panel-commands commands-108" data-is-visible="true"></div><div class="ms-Panel-contentInner contentInner-110"><div id="transcriptHeader" class="transcriptHeader-65"><h1 class="transcriptHeaderTitle-67">Transcript</h1><div class="ms-TooltipHost root-122"><button type="button" id="closeIcon" aria-label="Close" class="ms-Button ms-Button--icon root-123" data-is-focusable="true"><span class="ms-Button-flexContainer flexContainer-54" data-automationid="splitbuttonprimary"><i data-icon-name="Cancel" role="presentation" aria-hidden="true" class="ms-Icon root-37 css-125 ms-Button-icon icon-124" style="font-family: StreamMDL2Icons;"></i></span></button></div><div class="ms-SearchBox is-underlined searchBox-157"><div class="ms-SearchBox-iconContainer iconContainer-158" aria-hidden="true"><i data-icon-name="Search" aria-hidden="true" class="ms-SearchBox-icon icon-161"></i></div><input id="searchBox" class="ms-SearchBox-field field-160" placeholder="Search" role="searchbox" value=""></div><div id="viewTopBarContainer" class="viewTopBarContainer-86"><div id="labelContainer" class="languageLabelContainer-83"><label id="autogeneratedLabel" class="ms-Label languageLabel-132">Autogenerated by Microsoft.<span><a href="https://docs.microsoft.com/stream/portal-autogenerate-captions" target="_blank" class="hyperlink-97">Learn more</a></span></label></div></div></div><div class="ms-Panel-scrollableContent scrollableContent-156" data-is-scrollable="true"><div class="ms-Panel-content content-114"><div id="searchResults" style="display: none;"><div class="ms-FocusZone css-133" data-focuszone-id="FocusZone14"><div class="ms-List"><div role="presentation" class="ms-List-surface"></div></div></div></div><div id="transcript" class="" data-is-scrollable="false" style="display: block;"><div class="ms-Shimmer-container root-135"><div class="ms-Shimmer-dataWrapper dataWrapper-163"><div class="ms-List transcriptList-66" role="list"><div role="presentation" class="ms-List-surface"><div class="ms-List-page" role="presentation"><div role="listitem" class="ms-List-cell" data-list-index="0" data-automationid="ListCell"><div role="presentation" id="paragraph-0" class="paragraph-100" tabindex="-1"><div id="timestampContainer-0" class="timestampContainer-98"><button tabindex="-1" id="Focus-timestamp-0" class="timestamp-91" style="top: 0px; color: rgb(195, 0, 82); font-family: &quot;Segoe UI Semibold&quot;, &quot;Stream Segoe UI Semibold&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-variant-numeric: tabular-nums;">00:02</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-0-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-0-0" aria-label="Hey guys it&#39;s Anthony and I wanted to give Clicking on this transcript will seek video to the time of 2 seconds from beginning." tabindex="0" class="cueInParagraph-101" contenteditable="false">Hey guys it's Anthony and I wanted to give</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-0-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-0-1" aria-label="you guys some thoughts on how to add a Clicking on this transcript will seek video to the time of 5 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">you guys some thoughts on how to add a</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-0-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-0-2" aria-label="unity project to your GitHub repository Clicking on this transcript will seek video to the time of 8 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">unity project to your GitHub repository</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-0-3" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-0-3" aria-label="so let me show you how you do that. Clicking on this transcript will seek video to the time of 11 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">so let me show you how you do that.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-0-4" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-0-4" aria-label="I have GitHub right. Clicking on this transcript will seek video to the time of 14 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I have GitHub right.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="1" data-automationid="ListCell"><div role="presentation" id="paragraph-1" class="paragraph-100" tabindex="-1"><div id="timestampContainer-1" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-1" class="timestamp-91">00:15</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-1-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-1-0" aria-label="I have git get crackin open right here Clicking on this transcript will seek video to the time of 15 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I have git get crackin open right here</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-1-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-1-1" aria-label="and I&#39;m going to launch Unity Hub. Clicking on this transcript will seek video to the time of 18 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">and I'm going to launch Unity Hub.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="2" data-automationid="ListCell"><div role="presentation" id="paragraph-2" class="paragraph-100" tabindex="-1"><div id="timestampContainer-2" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-2" class="timestamp-91">00:21</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-2-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-2-0" aria-label="Now there&#39;s a couple of tricks we&#39;re Clicking on this transcript will seek video to the time of 21 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">Now there's a couple of tricks we're</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-2-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-2-1" aria-label="going to do to add it, I&#39;m not. Clicking on this transcript will seek video to the time of 23 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">going to do to add it, I'm not.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-2-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-2-2" aria-label="I&#39;m not asking for perfect Clicking on this transcript will seek video to the time of 25 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I'm not asking for perfect</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-2-3" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-2-3" aria-label="things from you guys, Clicking on this transcript will seek video to the time of 26 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">things from you guys,</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-2-4" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-2-4" aria-label="I&#39;m just asking you guys to practice this. Clicking on this transcript will seek video to the time of 27 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I'm just asking you guys to practice this.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="3" data-automationid="ListCell"><div role="presentation" id="paragraph-3" class="paragraph-100" tabindex="-1"><div id="timestampContainer-3" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-3" class="timestamp-91">00:29</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-3-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-3-0" aria-label="So what I&#39;m going to do is I Clicking on this transcript will seek video to the time of 29 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">So what I'm going to do is I</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-3-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-3-1" aria-label="have Unity hub open right here. Clicking on this transcript will seek video to the time of 31 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">have Unity hub open right here.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="4" data-automationid="ListCell"><div role="presentation" id="paragraph-4" class="paragraph-100" tabindex="-1"><div id="timestampContainer-4" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-4" class="timestamp-91">00:33</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-4-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-4-0" aria-label="You have to have a number Clicking on this transcript will seek video to the time of 33 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">You have to have a number</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-4-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-4-1" aria-label="of projects that I work on. Clicking on this transcript will seek video to the time of 35 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">of projects that I work on.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="5" data-automationid="ListCell"><div role="presentation" id="paragraph-5" class="paragraph-100" tabindex="-1"><div id="timestampContainer-5" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-5" class="timestamp-91">00:36</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-5-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-5-0" aria-label="I&#39;m going to hit this new button and Clicking on this transcript will seek video to the time of 36 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I'm going to hit this new button and</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-5-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-5-1" aria-label="when this pops up I&#39;m I can choose some Clicking on this transcript will seek video to the time of 39 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">when this pops up I'm I can choose some</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-5-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-5-2" aria-label="of you asked if it needs to be 2D or 3D. Clicking on this transcript will seek video to the time of 41 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">of you asked if it needs to be 2D or 3D.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="6" data-automationid="ListCell"><div role="presentation" id="paragraph-6" class="paragraph-100" tabindex="-1"><div id="timestampContainer-6" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-6" class="timestamp-91">00:44</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-6-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-6-0" aria-label="It doesn&#39;t matter. Clicking on this transcript will seek video to the time of 44 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">It doesn't matter.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-6-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-6-1" aria-label="3DS that the default, Clicking on this transcript will seek video to the time of 45 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">3DS that the default,</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="7" data-automationid="ListCell"><div role="presentation" id="paragraph-7" class="paragraph-100" tabindex="-1"><div id="timestampContainer-7" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-7" class="timestamp-91">00:46</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-7-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-7-0" aria-label="just choose one of these two. Clicking on this transcript will seek video to the time of 46 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">just choose one of these two.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="8" data-automationid="ListCell"><div role="presentation" id="paragraph-8" class="paragraph-100" tabindex="-1"><div id="timestampContainer-8" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-8" class="timestamp-91">00:47</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-8-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-8-0" aria-label="Let&#39;s give it a project name. Clicking on this transcript will seek video to the time of 47 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">Let's give it a project name.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="9" data-automationid="ListCell"><div role="presentation" id="paragraph-9" class="paragraph-100" tabindex="-1"><div id="timestampContainer-9" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-9" class="timestamp-91">00:49</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-9-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-9-0" aria-label="I&#39;m just going to call this one summer. Clicking on this transcript will seek video to the time of 49 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">I'm just going to call this one summer.</div><div id="separator" class="separator-69"></div></div></div></div></div></div><div class="ms-List-page" role="presentation"><div role="listitem" class="ms-List-cell" data-list-index="10" data-automationid="ListCell"><div role="presentation" id="paragraph-10" class="paragraph-100" tabindex="-1"><div id="timestampContainer-10" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-10" class="timestamp-91">00:51</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-10-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-10-0" aria-label="Class. And now this is the important part. Clicking on this transcript will seek video to the time of 51 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">Class. And now this is the important part.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="11" data-automationid="ListCell"><div role="presentation" id="paragraph-11" class="paragraph-100" tabindex="-1"><div id="timestampContainer-11" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-11" class="timestamp-91">00:55</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-11-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-11-0" aria-label="The location, right? Clicking on this transcript will seek video to the time of 55 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">The location, right?</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-11-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-11-1" aria-label="So let me help you understand the Clicking on this transcript will seek video to the time of 56 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">So let me help you understand the</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="12" data-automationid="ListCell"><div role="presentation" id="paragraph-12" class="paragraph-100" tabindex="-1"><div id="timestampContainer-12" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-12" class="timestamp-91">00:58</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-12-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-12-0" aria-label="location of where to put this. Clicking on this transcript will seek video to the time of 58 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">location of where to put this.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="13" data-automationid="ListCell"><div role="presentation" id="paragraph-13" class="paragraph-100" tabindex="-1"><div id="timestampContainer-13" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-13" class="timestamp-91">01:00</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-13-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-13-0" aria-label="So if I go here to get cracking, Clicking on this transcript will seek video to the time of 60 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">So if I go here to get cracking,</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="14" data-automationid="ListCell"><div role="presentation" id="paragraph-14" class="paragraph-100" tabindex="-1"><div id="timestampContainer-14" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-14" class="timestamp-91">01:02</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-14-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-14-0" aria-label="one way to know where this folder Clicking on this transcript will seek video to the time of 62 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">one way to know where this folder</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-14-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-14-1" aria-label="is is you can see that I have a text Clicking on this transcript will seek video to the time of 64 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">is is you can see that I have a text</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-14-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-14-2" aria-label="file and initial commitment here. Clicking on this transcript will seek video to the time of 67 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">file and initial commitment here.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-14-3" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-14-3" aria-label="And I have files in here. Clicking on this transcript will seek video to the time of 69 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">And I have files in here.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="15" data-automationid="ListCell"><div role="presentation" id="paragraph-15" class="paragraph-100" tabindex="-1"><div id="timestampContainer-15" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-15" class="timestamp-91">01:10</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-15-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-0" aria-label="What I could do is I could right click Clicking on this transcript will seek video to the time of 70 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">What I could do is I could right click</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-1" aria-label="in this area and I could say let&#39;s Clicking on this transcript will seek video to the time of 73 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">in this area and I could say let's</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-2" aria-label="show in Finder on the PC it might Clicking on this transcript will seek video to the time of 75 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">show in Finder on the PC it might</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-3" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-3" aria-label="say show and explore or show folder. Clicking on this transcript will seek video to the time of 78 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">say show and explore or show folder.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-4" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-4" aria-label="So right here it&#39;s going to open Clicking on this transcript will seek video to the time of 81 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">So right here it's going to open</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-5" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-5" aria-label="it up and this is the location Clicking on this transcript will seek video to the time of 83 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">it up and this is the location</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-15-6" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-15-6" aria-label="right now on the Mac. Clicking on this transcript will seek video to the time of 85 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">right now on the Mac.</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="16" data-automationid="ListCell"><div role="presentation" id="paragraph-16" class="paragraph-100" tabindex="-1"><div id="timestampContainer-16" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-16" class="timestamp-91">01:26</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-16-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-16-0" aria-label="If I if I hit the command Clicking on this transcript will seek video to the time of 86 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">If I if I hit the command</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-16-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-16-1" aria-label="key and click on this, Clicking on this transcript will seek video to the time of 88 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">key and click on this,</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="17" data-automationid="ListCell"><div role="presentation" id="paragraph-17" class="paragraph-100" tabindex="-1"><div id="timestampContainer-17" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-17" class="timestamp-91">01:30</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-17-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-0" aria-label="it&#39;ll pop this down on the PC you&#39;ll Clicking on this transcript will seek video to the time of 90 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">it'll pop this down on the PC you'll</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-1" aria-label="have bread crumbs so you can see where Clicking on this transcript will seek video to the time of 92 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">have bread crumbs so you can see where</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-2" aria-label="the location of the folder is so you Clicking on this transcript will seek video to the time of 94 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">the location of the folder is so you</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-3" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-3" aria-label="can see that I have this in my in my Clicking on this transcript will seek video to the time of 97 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">can see that I have this in my in my</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-4" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-4" aria-label="users folder so users Anthony Romrell Git. Clicking on this transcript will seek video to the time of 99 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">users folder so users Anthony Romrell Git.</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-5" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-5" aria-label="Now if you&#39;re on a PC it&#39;s Clicking on this transcript will seek video to the time of 101 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">Now if you're on a PC it's</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-17-6" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-17-6" aria-label="probably in your documents folder, Clicking on this transcript will seek video to the time of 103 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">probably in your documents folder,</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="18" data-automationid="ListCell"><div role="presentation" id="paragraph-18" class="paragraph-100" tabindex="-1"><div id="timestampContainer-18" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-18" class="timestamp-91">01:45</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-18-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-18-0" aria-label="right? Clicking on this transcript will seek video to the time of 105 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">right?</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-18-1" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-18-1" aria-label="So I&#39;m just going to make sure Clicking on this transcript will seek video to the time of 105 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">So I'm just going to make sure</div><div id="separator" class="separator-69"></div></div><div id="cueContainer-transcript-text-18-2" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-18-2" aria-label="that I have the right same path, Clicking on this transcript will seek video to the time of 107 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">that I have the right same path,</div><div id="separator" class="separator-69"></div></div></div></div></div><div role="listitem" class="ms-List-cell" data-list-index="19" data-automationid="ListCell"><div role="presentation" id="paragraph-19" class="paragraph-100" tabindex="-1"><div id="timestampContainer-19" class="timestampContainer-98"><button tabindex="-1" id="Top-timestamp-19" class="timestamp-91">01:49</button></div><div class="paragraphCueContainer-80"><div id="cueContainer-transcript-text-19-0" data-is-focusable="true" class="cueContainer-79"><div id="transcript-text-19-0" aria-label="so I&#39;m going to come over to Unity Hub. Clicking on this transcript will seek video to the time of 109 seconds from beginning." tabindex="-1" class="cueInParagraph-101" contenteditable="false">so I'm going to come over to Unity Hub.</div><div id="separator" class="separator-69"></div></div></div></div></div></div><div class="ms-List-page" role="presentation" style="height: 4088px;"></div></div></div></div></div></div><div id="emptyResults" class="inactiveTranscriptContentDiv-74">No search results found.</div><div id="searchError" class="inactiveTranscriptContentDiv-74">The server encountered an error while searching, please try again later.</div><div id="transcriptError" class="inactiveTranscriptContentDiv-74"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY0IiBoZWlnaHQ9IjEwMiIgdmlld0JveD0iMCAwIDE2NCAxMDIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDApIj4NCjxyZWN0IHg9IjAuOTMxODI0IiB5PSIyNi4xMTMzIiB3aWR0aD0iOTkuNjUzMSIgaGVpZ2h0PSI2My40MTU2IiByeD0iMyIgdHJhbnNmb3JtPSJyb3RhdGUoLTEzIDAuOTMxODI0IDI2LjExMzMpIiBmaWxsPSIjRjVDRURFIi8+DQo8cGF0aCBkPSJNNTIuMzM1MiAzOS4yNjQ5TDY2LjQxODMgNDIuOTA0MkM2Ny4zMzY3IDQzLjE0MTUgNjcuODg4OCA0NC4wNzg0IDY3LjY1MTUgNDQuOTk2OEM2Ny41NjMzIDQ1LjMzODIgNjcuMzcyIDQ1LjY0NDMgNjcuMTAzOCA0NS44NzMzTDU2LjA0MTMgNTUuMzE3OUM1NS4zMTk5IDU1LjkzMzggNTQuMjM1OCA1NS44NDgyIDUzLjYxOTkgNTUuMTI2OEM1My40NDA3IDU0LjkxNjkgNTMuMzE0NyA1NC42NjY5IDUzLjI1MjcgNTQuMzk4TDUwLjIzMiA0MS4zMTQxQzUwLjAxODYgNDAuMzg5OSA1MC41OTQ5IDM5LjQ2NzYgNTEuNTE5MSAzOS4yNTQzQzUxLjc0OTYgMzkuMjAxMSA1MS45ODgyIDM5LjE5NjEgNTIuMjIgMzkuMjM5M0w1Mi4zMzUyIDM5LjI2NDlaIiBmaWxsPSIjREY2RjlFIi8+DQo8cmVjdCB4PSIxMDIuODg4IiB5PSI2MC44MjQyIiB3aWR0aD0iNiIgaGVpZ2h0PSI2IiB0cmFuc2Zvcm09InJvdGF0ZSgtMyAxMDIuODg4IDYwLjgyNDIpIiBmaWxsPSIjQzRDNEM0Ii8+DQo8L2c+DQo8cmVjdCB4PSI5Mi41MTUxIiB5PSIyOS40NDUzIiB3aWR0aD0iNDguMTc3NSIgaGVpZ2h0PSI2MC43NDU1IiByeD0iMiIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5Mi41MTUxIDI5LjQ0NTMpIiBmaWxsPSIjRURFQkU5Ii8+DQo8Y2lyY2xlIGN4PSIxMDAuNDA0IiBjeT0iMzkuNDM0OCIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDAuNDA0IDM5LjQzNDgpIiBmaWxsPSIjQzhDNkM0Ii8+DQo8Y2lyY2xlIGN4PSI5OS43NTMzIiBjeT0iNTEuODQ4OSIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OS43NTMzIDUxLjg0ODkpIiBmaWxsPSIjQzhDNkM0Ii8+DQo8Y2lyY2xlIGN4PSI5OC42OTQ2IiBjeT0iNjguNTc0NSIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OC42OTQ2IDY4LjU3NDUpIiBmaWxsPSIjRDJEMENFIi8+DQo8Y2lyY2xlIGN4PSI5OC4wMzY3IiBjeT0iODEuMTI1MyIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OC4wMzY3IDgxLjEyNTMpIiBmaWxsPSIjRDJEMENFIi8+DQo8cmVjdCB4PSIxMDYuNzc0IiB5PSIzNy41MzUyIiB3aWR0aD0iMjcuMjMwOCIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNi43NzQgMzcuNTM1MikiIGZpbGw9IiNEMkQwQ0UiLz4NCjxyZWN0IHg9IjEwNi41NTUiIHk9IjQxLjcxNzgiIHdpZHRoPSIxMC40NzM0IiBoZWlnaHQ9IjQuMTg5MzUiIHRyYW5zZm9ybT0icm90YXRlKDMgMTA2LjU1NSA0MS43MTc4KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA2LjExNiIgeT0iNTAuMDg1IiB3aWR0aD0iMjcuMjMwOCIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNi4xMTYgNTAuMDg1KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA1Ljg5NyIgeT0iNTQuMjY4NiIgd2lkdGg9IjI3LjIzMDgiIGhlaWdodD0iNC4xODkzNSIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDUuODk3IDU0LjI2ODYpIiBmaWxsPSIjRDJEMENFIi8+DQo8cmVjdCB4PSIxMDUuNjc4IiB5PSI1OC40NTMxIiB3aWR0aD0iMjAuOTQ2NyIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNS42NzggNTguNDUzMSkiIGZpbGw9IiNEMkQwQ0UiLz4NCjxyZWN0IHg9IjEwNS4yMzkiIHk9IjY2LjgyMDMiIHdpZHRoPSIyNy4yMzA4IiBoZWlnaHQ9IjQuMTg5MzUiIHRyYW5zZm9ybT0icm90YXRlKDMgMTA1LjIzOSA2Ni44MjAzKSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA1LjAyIiB5PSI3MS4wMDM5IiB3aWR0aD0iMjAuOTQ2NyIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNS4wMiA3MS4wMDM5KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA0LjU4MSIgeT0iNzkuMzcxMSIgd2lkdGg9IjIwLjk0NjciIGhlaWdodD0iNC4xODkzNSIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDQuNTgxIDc5LjM3MTEpIiBmaWxsPSIjRDJEMENFIi8+DQo8cGF0aCBvcGFjaXR5PSIwLjIiIGQ9Ik05Mi4zMzQyIDMxLjIzMThMOTAuMzM4MSA3MC40OTE0TDExMC4wNDEgNjUuNjUzOEMxMTEuMDk2IDY1LjM5NDggMTExLjc1MSA2NC4zNDE0IDExMS41MTggNjMuMjgwOEwxMDQuMTg4IDMwLjA0TDk0LjQ3NTcgMjkuMzM4NkM5My4zNTczIDI5LjI1NzggOTIuMzkxMSAzMC4xMTIgOTIuMzM0MiAzMS4yMzE4WiIgZmlsbD0iI0VEQTZDMyIvPg0KPGcgb3BhY2l0eT0iMC4yIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMyLjM5MSAyOS43Mzk0QzEzMi43NCAyOS4zOTcyIDEzMy4wNDYgMjkuMDE4NSAxMzMuMzEgMjguNjAzM0wxMzUuNDM5IDI5LjQ2MTdMMTM2LjI2MyAyNy40NzU2TDEzNC4xNTEgMjYuNjE3MkMxMzQuMjY1IDI2LjE2ODQgMTM0LjMyMyAyNS42ODU5IDEzNC4zMjMgMjUuMTY5N0MxMzQuMzIzIDI0LjY1MzYgMTM0LjI2NSAyNC4xNzExIDEzNC4xNTEgMjMuNzIyM0wxMzYuMjYzIDIyLjg2MzlMMTM1LjQzOSAyMC44Nzc4TDEzMy4zMSAyMS43MzYyQzEzMi43ODMgMjAuODk0NiAxMzIuMDkgMjAuMjE1OCAxMzEuMjMyIDE5LjY5OTZMMTMyLjEwOCAxNy42MTI2TDEzMC4wODEgMTYuODA0N0wxMjkuMjA2IDE4Ljg3NDlDMTI4Ljc0OCAxOC43NjI3IDEyOC4yNTUgMTguNzA2NiAxMjcuNzI5IDE4LjcwNjZDMTI3LjIwMiAxOC43MDY2IDEyNi43MSAxOC43NjI3IDEyNi4yNTIgMTguODc0OUwxMjUuMzc2IDE2LjgwNDdMMTIzLjM1IDE3LjYxMjZMMTI0LjIyNiAxOS42OTk2QzEyMy4zNjcgMjAuMjE1OCAxMjIuNjc1IDIwLjg5NDYgMTIyLjE0OCAyMS43MzYyTDEyMC4wMTkgMjAuODc3OEwxMTkuMTk1IDIyLjg2MzlMMTIxLjMwNyAyMy43MjIzQzEyMS4xOTIgMjQuMTcxMSAxMjEuMTM1IDI0LjY1MzYgMTIxLjEzNSAyNS4xNjk3QzEyMS4xMzUgMjUuNjg1OSAxMjEuMTkyIDI2LjE2ODQgMTIxLjMwNyAyNi42MTcyTDExOS4xOTUgMjcuNDc1NkwxMjAuMDE5IDI5LjQ2MTdMMTIyLjE0OCAyOC42MDMzQzEyMi40MTEgMjkuMDE4NSAxMjIuNzE4IDI5LjM5NzIgMTIzLjA2NyAyOS43Mzk0QzEyMy40MTYgMzAuMDgxNiAxMjMuODAyIDMwLjM4MTggMTI0LjIyNiAzMC42Mzk4TDEyMy4zNSAzMi43MjY5TDEyNS4zNzYgMzMuNTM0OEwxMjYuMjUyIDMxLjQ2NDZDMTI2LjcxIDMxLjU3NjggMTI3LjIwMiAzMS42MzI5IDEyNy43MjkgMzEuNjMyOUMxMjguMjU1IDMxLjYzMjkgMTI4Ljc0OCAzMS41NzY4IDEyOS4yMDYgMzEuNDY0NkwxMzAuMDgxIDMzLjUzNDhMMTMyLjEwOCAzMi43MjY5TDEzMS4yMzIgMzAuNjM5OEMxMzEuNjU1IDMwLjM4MTggMTMyLjA0MiAzMC4wODE2IDEzMi4zOTEgMjkuNzM5NFpNMTI5LjQzNyAyOS4xNDE5QzEyOC45MDUgMjkuMzY2MyAxMjguMzM2IDI5LjQ3ODUgMTI3LjcyOSAyOS40Nzg1QzEyNy4xMjIgMjkuNDc4NSAxMjYuNTUzIDI5LjM2NjMgMTI2LjAyIDI5LjE0MTlDMTI1LjQ4OCAyOC45MTc1IDEyNS4wMjEgMjguNjA4OSAxMjQuNjIxIDI4LjIxNjJDMTI0LjIyIDI3LjgyMzQgMTIzLjkwNSAyNy4zNjYyIDEyMy42NzYgMjYuODQ0NEMxMjMuNDQ3IDI2LjMyMjcgMTIzLjMzMyAyNS43NjQ0IDEyMy4zMzMgMjUuMTY5N0MxMjMuMzMzIDI0LjU3NSAxMjMuNDQ3IDI0LjAxNjggMTIzLjY3NiAyMy40OTUxQzEyMy45MDUgMjIuOTczMyAxMjQuMjIgMjIuNTE2IDEyNC42MjEgMjIuMTIzM0MxMjUuMDIxIDIxLjczMDYgMTI1LjQ4OCAyMS40MjIgMTI2LjAyIDIxLjE5NzZDMTI2LjU1MyAyMC45NzMyIDEyNy4xMjIgMjAuODYxIDEyNy43MjkgMjAuODYxQzEyOC4zMzYgMjAuODYxIDEyOC45MDUgMjAuOTczMiAxMjkuNDM3IDIxLjE5NzZDMTI5Ljk3IDIxLjQyMiAxMzAuNDM2IDIxLjczMDYgMTMwLjgzNyAyMi4xMjMzQzEzMS4yMzggMjIuNTE2IDEzMS41NTIgMjIuOTczMyAxMzEuNzgxIDIzLjQ5NTFDMTMyLjAxIDI0LjAxNjggMTMyLjEyNSAyNC41NzUgMTMyLjEyNSAyNS4xNjk3QzEzMi4xMjUgMjUuNzY0NCAxMzIuMDEgMjYuMzIyNyAxMzEuNzgxIDI2Ljg0NDRDMTMxLjU1MiAyNy4zNjYyIDEzMS4yMzggMjcuODIzNCAxMzAuODM3IDI4LjIxNjJDMTMwLjQzNiAyOC42MDg5IDEyOS45NyAyOC45MTc1IDEyOS40MzcgMjkuMTQxOVpNMTUxLjkwNiAzNy4wMTg4QzE1MS45MDYgMzcuNjM2IDE1MS44MjYgMzguMjU4NyAxNTEuNjY2IDM4Ljg4NzFMMTU0LjAxOCAzOS44Mjk2TDE1My4xOTQgNDEuODMyNUwxNTAuODI0IDQwLjg3MzFDMTUwLjE0OSA0MS45NzI4IDE0OS4yNTYgNDIuODQ4IDE0OC4xNDYgNDMuNDk4OEwxNDkuMTI0IDQ1LjgwNDZMMTQ3LjA4MSA0Ni42Mjk0TDE0Ni4xMTkgNDQuMzIzNUMxNDUuNDc4IDQ0LjQ4MDYgMTQ0Ljg0MyA0NC41NTkxIDE0NC4yMTMgNDQuNTU5MUMxNDMuNTg0IDQ0LjU1OTEgMTQyLjk0OCA0NC40ODA2IDE0Mi4zMDcgNDQuMzIzNUwxNDEuMzQ2IDQ2LjYyOTRMMTM5LjMwMiA0NS44MDQ2TDE0MC4yODEgNDMuNDk4OEMxMzkuMTU5IDQyLjg0OCAxMzguMjY2IDQxLjk3MjggMTM3LjYwMiA0MC44NzMxTDEzNS4yMzMgNDEuODMyNUwxMzQuNDA5IDM5LjgyOTZMMTM2Ljc2MSAzOC44ODcxQzEzNi42MDEgMzguMjU4NyAxMzYuNTIxIDM3LjYzNiAxMzYuNTIxIDM3LjAxODhDMTM2LjUyMSAzNi40MDE3IDEzNi42MDEgMzUuNzc4OSAxMzYuNzYxIDM1LjE1MDZMMTM0LjQwOSAzNC4yMDhMMTM1LjIzMyAzMi4yMDUxTDEzNy42MDIgMzMuMTY0NUMxMzguMjY2IDMyLjA3NjEgMTM5LjE1OSAzMS4yMDA5IDE0MC4yODEgMzAuNTM4OUwxMzkuMzAyIDI4LjIxNjJMMTQxLjM0NiAyNy40MDgzTDE0Mi4zMDcgMjkuNzE0MUMxNDIuOTQ4IDI5LjU1NzEgMTQzLjU4NCAyOS40Nzg1IDE0NC4yMTMgMjkuNDc4NUMxNDQuODQzIDI5LjQ3ODUgMTQ1LjQ3OCAyOS41NTcxIDE0Ni4xMTkgMjkuNzE0MUwxNDcuMDgxIDI3LjQwODNMMTQ5LjEyNCAyOC4yMTYyTDE0OC4xNDYgMzAuNTM4OUMxNDkuMjU2IDMxLjIwMDkgMTUwLjE0OSAzMi4wNzYxIDE1MC44MjQgMzMuMTY0NUwxNTMuMTk0IDMyLjIwNTFMMTU0LjAxOCAzNC4yMDhMMTUxLjY2NiAzNS4xNTA2QzE1MS44MjYgMzUuNzc4OSAxNTEuOTA2IDM2LjQwMTcgMTUxLjkwNiAzNy4wMTg4Wk0xNDYuMzQzIDQxLjk4NEMxNDUuNjc5IDQyLjI2NDUgMTQ0Ljk2OSA0Mi40MDQ4IDE0NC4yMTMgNDIuNDA0OEMxNDMuNDU4IDQyLjQwNDggMTQyLjc0NSA0Mi4yNjQ1IDE0Mi4wNzYgNDEuOTg0QzE0MS40MDYgNDEuNzAzNSAxNDAuODIyIDQxLjMxOTIgMTQwLjMyNCA0MC44MzFDMTM5LjgyNiA0MC4zNDMgMTM5LjQzNCAzOS43NzA3IDEzOS4xNDggMzkuMTE0M0MxMzguODYyIDM4LjQ1NzkgMTM4LjcxOSAzNy43NTk0IDEzOC43MTkgMzcuMDE4OEMxMzguNzE5IDM2LjI3ODIgMTM4Ljg2MiAzNS41ODI2IDEzOS4xNDggMzQuOTMxOEMxMzkuNDM0IDM0LjI4MSAxMzkuODI2IDMzLjcxMTUgMTQwLjMyNCAzMy4yMjM0QzE0MC44MjIgMzIuNzM1MyAxNDEuNDA2IDMyLjM0ODIgMTQyLjA3NiAzMi4wNjIxQzE0Mi43NDUgMzEuNzc1OSAxNDMuNDU4IDMxLjYzMjkgMTQ0LjIxMyAzMS42MzI5QzE0NC45NjkgMzEuNjMyOSAxNDUuNjc5IDMxLjc3NTkgMTQ2LjM0MyAzMi4wNjIxQzE0Ny4wMDcgMzIuMzQ4MiAxNDcuNTg4IDMyLjczNTMgMTQ4LjA4NiAzMy4yMjM0QzE0OC41ODQgMzMuNzExNSAxNDguOTc4IDM0LjI4MSAxNDkuMjcgMzQuOTMxOEMxNDkuNTYyIDM1LjU4MjYgMTQ5LjcwOCAzNi4yNzgyIDE0OS43MDggMzcuMDE4OEMxNDkuNzA4IDM3Ljc1OTQgMTQ5LjU2MiAzOC40NTc5IDE0OS4yNyAzOS4xMTQzQzE0OC45NzggMzkuNzcwNyAxNDguNTg0IDQwLjM0MjkgMTQ4LjA4NiA0MC44MzFDMTQ3LjU4OCA0MS4zMTkyIDE0Ny4wMDcgNDEuNzAzNSAxNDYuMzQzIDQxLjk4NFoiIGZpbGw9ImJsYWNrIi8+DQo8L2c+DQo8Y2lyY2xlIG9wYWNpdHk9IjAuMiIgY3g9IjEwMC40MDQiIGN5PSIzOS40MzQ4IiByPSIyLjA5NDY3IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwMC40MDQgMzkuNDM0OCkiIGZpbGw9IiNERjZGOUUiLz4NCjxjaXJjbGUgb3BhY2l0eT0iMC4yIiBjeD0iOTkuNzUzMiIgY3k9IjUxLjg0ODkiIHI9IjIuMDk0NjciIHRyYW5zZm9ybT0icm90YXRlKDMgOTkuNzUzMiA1MS44NDg5KSIgZmlsbD0iI0RGNkY5RSIvPg0KPHBhdGggb3BhY2l0eT0iMC4yIiBkPSJNOTguODA0MSA2Ni40ODI3Qzk3LjY0ODkgNjYuNDIyMSA5Ni42NjMzIDY3LjMwOTYgOTYuNjAyNyA2OC40NjQ5Qzk2LjU5NTIgNjguNjA3NSA5Ni42MDIyIDY4Ljc0NzUgOTYuNjIyNCA2OC44ODM2TDEwMC42ODggNjcuOTMwMUMxMDAuNDI5IDY3LjEyNzkgOTkuNjk2MyA2Ni41Mjk0IDk4LjgwNDEgNjYuNDgyN1oiIGZpbGw9IiNERjZGOUUiLz4NCjxkZWZzPg0KPGNsaXBQYXRoIGlkPSJjbGlwMCI+DQo8cmVjdCB4PSIwLjkzMTgyNCIgeT0iMjYuMTEzMyIgd2lkdGg9IjEwMi41MzgiIGhlaWdodD0iNjMuODg3NiIgdHJhbnNmb3JtPSJyb3RhdGUoLTEzIDAuOTMxODI0IDI2LjExMzMpIiBmaWxsPSJ3aGl0ZSIvPg0KPC9jbGlwUGF0aD4NCjwvZGVmcz4NCjwvc3ZnPg0K"><p class="contentText-84"> Failed to load video transcript.</p></div><div id="transcriptProcessing" class="inactiveTranscriptContentDiv-74"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY0IiBoZWlnaHQ9IjEwMiIgdmlld0JveD0iMCAwIDE2NCAxMDIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDApIj4NCjxyZWN0IHg9IjAuOTMxODI0IiB5PSIyNi4xMTMzIiB3aWR0aD0iOTkuNjUzMSIgaGVpZ2h0PSI2My40MTU2IiByeD0iMyIgdHJhbnNmb3JtPSJyb3RhdGUoLTEzIDAuOTMxODI0IDI2LjExMzMpIiBmaWxsPSIjRjVDRURFIi8+DQo8cGF0aCBkPSJNNTIuMzM1MiAzOS4yNjQ5TDY2LjQxODMgNDIuOTA0MkM2Ny4zMzY3IDQzLjE0MTUgNjcuODg4OCA0NC4wNzg0IDY3LjY1MTUgNDQuOTk2OEM2Ny41NjMzIDQ1LjMzODIgNjcuMzcyIDQ1LjY0NDMgNjcuMTAzOCA0NS44NzMzTDU2LjA0MTMgNTUuMzE3OUM1NS4zMTk5IDU1LjkzMzggNTQuMjM1OCA1NS44NDgyIDUzLjYxOTkgNTUuMTI2OEM1My40NDA3IDU0LjkxNjkgNTMuMzE0NyA1NC42NjY5IDUzLjI1MjcgNTQuMzk4TDUwLjIzMiA0MS4zMTQxQzUwLjAxODYgNDAuMzg5OSA1MC41OTQ5IDM5LjQ2NzYgNTEuNTE5MSAzOS4yNTQzQzUxLjc0OTYgMzkuMjAxMSA1MS45ODgyIDM5LjE5NjEgNTIuMjIgMzkuMjM5M0w1Mi4zMzUyIDM5LjI2NDlaIiBmaWxsPSIjREY2RjlFIi8+DQo8cmVjdCB4PSIxMDIuODg4IiB5PSI2MC44MjQyIiB3aWR0aD0iNiIgaGVpZ2h0PSI2IiB0cmFuc2Zvcm09InJvdGF0ZSgtMyAxMDIuODg4IDYwLjgyNDIpIiBmaWxsPSIjQzRDNEM0Ii8+DQo8L2c+DQo8cmVjdCB4PSI5Mi41MTUxIiB5PSIyOS40NDUzIiB3aWR0aD0iNDguMTc3NSIgaGVpZ2h0PSI2MC43NDU1IiByeD0iMiIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5Mi41MTUxIDI5LjQ0NTMpIiBmaWxsPSIjRURFQkU5Ii8+DQo8Y2lyY2xlIGN4PSIxMDAuNDA0IiBjeT0iMzkuNDM0OCIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDAuNDA0IDM5LjQzNDgpIiBmaWxsPSIjQzhDNkM0Ii8+DQo8Y2lyY2xlIGN4PSI5OS43NTMzIiBjeT0iNTEuODQ4OSIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OS43NTMzIDUxLjg0ODkpIiBmaWxsPSIjQzhDNkM0Ii8+DQo8Y2lyY2xlIGN4PSI5OC42OTQ2IiBjeT0iNjguNTc0NSIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OC42OTQ2IDY4LjU3NDUpIiBmaWxsPSIjRDJEMENFIi8+DQo8Y2lyY2xlIGN4PSI5OC4wMzY3IiBjeT0iODEuMTI1MyIgcj0iMi4wOTQ2NyIgdHJhbnNmb3JtPSJyb3RhdGUoMyA5OC4wMzY3IDgxLjEyNTMpIiBmaWxsPSIjRDJEMENFIi8+DQo8cmVjdCB4PSIxMDYuNzc0IiB5PSIzNy41MzUyIiB3aWR0aD0iMjcuMjMwOCIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNi43NzQgMzcuNTM1MikiIGZpbGw9IiNEMkQwQ0UiLz4NCjxyZWN0IHg9IjEwNi41NTUiIHk9IjQxLjcxNzgiIHdpZHRoPSIxMC40NzM0IiBoZWlnaHQ9IjQuMTg5MzUiIHRyYW5zZm9ybT0icm90YXRlKDMgMTA2LjU1NSA0MS43MTc4KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA2LjExNiIgeT0iNTAuMDg1IiB3aWR0aD0iMjcuMjMwOCIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNi4xMTYgNTAuMDg1KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA1Ljg5NyIgeT0iNTQuMjY4NiIgd2lkdGg9IjI3LjIzMDgiIGhlaWdodD0iNC4xODkzNSIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDUuODk3IDU0LjI2ODYpIiBmaWxsPSIjRDJEMENFIi8+DQo8cmVjdCB4PSIxMDUuNjc4IiB5PSI1OC40NTMxIiB3aWR0aD0iMjAuOTQ2NyIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNS42NzggNTguNDUzMSkiIGZpbGw9IiNEMkQwQ0UiLz4NCjxyZWN0IHg9IjEwNS4yMzkiIHk9IjY2LjgyMDMiIHdpZHRoPSIyNy4yMzA4IiBoZWlnaHQ9IjQuMTg5MzUiIHRyYW5zZm9ybT0icm90YXRlKDMgMTA1LjIzOSA2Ni44MjAzKSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA1LjAyIiB5PSI3MS4wMDM5IiB3aWR0aD0iMjAuOTQ2NyIgaGVpZ2h0PSI0LjE4OTM1IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwNS4wMiA3MS4wMDM5KSIgZmlsbD0iI0QyRDBDRSIvPg0KPHJlY3QgeD0iMTA0LjU4MSIgeT0iNzkuMzcxMSIgd2lkdGg9IjIwLjk0NjciIGhlaWdodD0iNC4xODkzNSIgdHJhbnNmb3JtPSJyb3RhdGUoMyAxMDQuNTgxIDc5LjM3MTEpIiBmaWxsPSIjRDJEMENFIi8+DQo8cGF0aCBvcGFjaXR5PSIwLjIiIGQ9Ik05Mi4zMzQyIDMxLjIzMThMOTAuMzM4MSA3MC40OTE0TDExMC4wNDEgNjUuNjUzOEMxMTEuMDk2IDY1LjM5NDggMTExLjc1MSA2NC4zNDE0IDExMS41MTggNjMuMjgwOEwxMDQuMTg4IDMwLjA0TDk0LjQ3NTcgMjkuMzM4NkM5My4zNTczIDI5LjI1NzggOTIuMzkxMSAzMC4xMTIgOTIuMzM0MiAzMS4yMzE4WiIgZmlsbD0iI0VEQTZDMyIvPg0KPGcgb3BhY2l0eT0iMC4yIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMyLjM5MSAyOS43Mzk0QzEzMi43NCAyOS4zOTcyIDEzMy4wNDYgMjkuMDE4NSAxMzMuMzEgMjguNjAzM0wxMzUuNDM5IDI5LjQ2MTdMMTM2LjI2MyAyNy40NzU2TDEzNC4xNTEgMjYuNjE3MkMxMzQuMjY1IDI2LjE2ODQgMTM0LjMyMyAyNS42ODU5IDEzNC4zMjMgMjUuMTY5N0MxMzQuMzIzIDI0LjY1MzYgMTM0LjI2NSAyNC4xNzExIDEzNC4xNTEgMjMuNzIyM0wxMzYuMjYzIDIyLjg2MzlMMTM1LjQzOSAyMC44Nzc4TDEzMy4zMSAyMS43MzYyQzEzMi43ODMgMjAuODk0NiAxMzIuMDkgMjAuMjE1OCAxMzEuMjMyIDE5LjY5OTZMMTMyLjEwOCAxNy42MTI2TDEzMC4wODEgMTYuODA0N0wxMjkuMjA2IDE4Ljg3NDlDMTI4Ljc0OCAxOC43NjI3IDEyOC4yNTUgMTguNzA2NiAxMjcuNzI5IDE4LjcwNjZDMTI3LjIwMiAxOC43MDY2IDEyNi43MSAxOC43NjI3IDEyNi4yNTIgMTguODc0OUwxMjUuMzc2IDE2LjgwNDdMMTIzLjM1IDE3LjYxMjZMMTI0LjIyNiAxOS42OTk2QzEyMy4zNjcgMjAuMjE1OCAxMjIuNjc1IDIwLjg5NDYgMTIyLjE0OCAyMS43MzYyTDEyMC4wMTkgMjAuODc3OEwxMTkuMTk1IDIyLjg2MzlMMTIxLjMwNyAyMy43MjIzQzEyMS4xOTIgMjQuMTcxMSAxMjEuMTM1IDI0LjY1MzYgMTIxLjEzNSAyNS4xNjk3QzEyMS4xMzUgMjUuNjg1OSAxMjEuMTkyIDI2LjE2ODQgMTIxLjMwNyAyNi42MTcyTDExOS4xOTUgMjcuNDc1NkwxMjAuMDE5IDI5LjQ2MTdMMTIyLjE0OCAyOC42MDMzQzEyMi40MTEgMjkuMDE4NSAxMjIuNzE4IDI5LjM5NzIgMTIzLjA2NyAyOS43Mzk0QzEyMy40MTYgMzAuMDgxNiAxMjMuODAyIDMwLjM4MTggMTI0LjIyNiAzMC42Mzk4TDEyMy4zNSAzMi43MjY5TDEyNS4zNzYgMzMuNTM0OEwxMjYuMjUyIDMxLjQ2NDZDMTI2LjcxIDMxLjU3NjggMTI3LjIwMiAzMS42MzI5IDEyNy43MjkgMzEuNjMyOUMxMjguMjU1IDMxLjYzMjkgMTI4Ljc0OCAzMS41NzY4IDEyOS4yMDYgMzEuNDY0NkwxMzAuMDgxIDMzLjUzNDhMMTMyLjEwOCAzMi43MjY5TDEzMS4yMzIgMzAuNjM5OEMxMzEuNjU1IDMwLjM4MTggMTMyLjA0MiAzMC4wODE2IDEzMi4zOTEgMjkuNzM5NFpNMTI5LjQzNyAyOS4xNDE5QzEyOC45MDUgMjkuMzY2MyAxMjguMzM2IDI5LjQ3ODUgMTI3LjcyOSAyOS40Nzg1QzEyNy4xMjIgMjkuNDc4NSAxMjYuNTUzIDI5LjM2NjMgMTI2LjAyIDI5LjE0MTlDMTI1LjQ4OCAyOC45MTc1IDEyNS4wMjEgMjguNjA4OSAxMjQuNjIxIDI4LjIxNjJDMTI0LjIyIDI3LjgyMzQgMTIzLjkwNSAyNy4zNjYyIDEyMy42NzYgMjYuODQ0NEMxMjMuNDQ3IDI2LjMyMjcgMTIzLjMzMyAyNS43NjQ0IDEyMy4zMzMgMjUuMTY5N0MxMjMuMzMzIDI0LjU3NSAxMjMuNDQ3IDI0LjAxNjggMTIzLjY3NiAyMy40OTUxQzEyMy45MDUgMjIuOTczMyAxMjQuMjIgMjIuNTE2IDEyNC42MjEgMjIuMTIzM0MxMjUuMDIxIDIxLjczMDYgMTI1LjQ4OCAyMS40MjIgMTI2LjAyIDIxLjE5NzZDMTI2LjU1MyAyMC45NzMyIDEyNy4xMjIgMjAuODYxIDEyNy43MjkgMjAuODYxQzEyOC4zMzYgMjAuODYxIDEyOC45MDUgMjAuOTczMiAxMjkuNDM3IDIxLjE5NzZDMTI5Ljk3IDIxLjQyMiAxMzAuNDM2IDIxLjczMDYgMTMwLjgzNyAyMi4xMjMzQzEzMS4yMzggMjIuNTE2IDEzMS41NTIgMjIuOTczMyAxMzEuNzgxIDIzLjQ5NTFDMTMyLjAxIDI0LjAxNjggMTMyLjEyNSAyNC41NzUgMTMyLjEyNSAyNS4xNjk3QzEzMi4xMjUgMjUuNzY0NCAxMzIuMDEgMjYuMzIyNyAxMzEuNzgxIDI2Ljg0NDRDMTMxLjU1MiAyNy4zNjYyIDEzMS4yMzggMjcuODIzNCAxMzAuODM3IDI4LjIxNjJDMTMwLjQzNiAyOC42MDg5IDEyOS45NyAyOC45MTc1IDEyOS40MzcgMjkuMTQxOVpNMTUxLjkwNiAzNy4wMTg4QzE1MS45MDYgMzcuNjM2IDE1MS44MjYgMzguMjU4NyAxNTEuNjY2IDM4Ljg4NzFMMTU0LjAxOCAzOS44Mjk2TDE1My4xOTQgNDEuODMyNUwxNTAuODI0IDQwLjg3MzFDMTUwLjE0OSA0MS45NzI4IDE0OS4yNTYgNDIuODQ4IDE0OC4xNDYgNDMuNDk4OEwxNDkuMTI0IDQ1LjgwNDZMMTQ3LjA4MSA0Ni42Mjk0TDE0Ni4xMTkgNDQuMzIzNUMxNDUuNDc4IDQ0LjQ4MDYgMTQ0Ljg0MyA0NC41NTkxIDE0NC4yMTMgNDQuNTU5MUMxNDMuNTg0IDQ0LjU1OTEgMTQyLjk0OCA0NC40ODA2IDE0Mi4zMDcgNDQuMzIzNUwxNDEuMzQ2IDQ2LjYyOTRMMTM5LjMwMiA0NS44MDQ2TDE0MC4yODEgNDMuNDk4OEMxMzkuMTU5IDQyLjg0OCAxMzguMjY2IDQxLjk3MjggMTM3LjYwMiA0MC44NzMxTDEzNS4yMzMgNDEuODMyNUwxMzQuNDA5IDM5LjgyOTZMMTM2Ljc2MSAzOC44ODcxQzEzNi42MDEgMzguMjU4NyAxMzYuNTIxIDM3LjYzNiAxMzYuNTIxIDM3LjAxODhDMTM2LjUyMSAzNi40MDE3IDEzNi42MDEgMzUuNzc4OSAxMzYuNzYxIDM1LjE1MDZMMTM0LjQwOSAzNC4yMDhMMTM1LjIzMyAzMi4yMDUxTDEzNy42MDIgMzMuMTY0NUMxMzguMjY2IDMyLjA3NjEgMTM5LjE1OSAzMS4yMDA5IDE0MC4yODEgMzAuNTM4OUwxMzkuMzAyIDI4LjIxNjJMMTQxLjM0NiAyNy40MDgzTDE0Mi4zMDcgMjkuNzE0MUMxNDIuOTQ4IDI5LjU1NzEgMTQzLjU4NCAyOS40Nzg1IDE0NC4yMTMgMjkuNDc4NUMxNDQuODQzIDI5LjQ3ODUgMTQ1LjQ3OCAyOS41NTcxIDE0Ni4xMTkgMjkuNzE0MUwxNDcuMDgxIDI3LjQwODNMMTQ5LjEyNCAyOC4yMTYyTDE0OC4xNDYgMzAuNTM4OUMxNDkuMjU2IDMxLjIwMDkgMTUwLjE0OSAzMi4wNzYxIDE1MC44MjQgMzMuMTY0NUwxNTMuMTk0IDMyLjIwNTFMMTU0LjAxOCAzNC4yMDhMMTUxLjY2NiAzNS4xNTA2QzE1MS44MjYgMzUuNzc4OSAxNTEuOTA2IDM2LjQwMTcgMTUxLjkwNiAzNy4wMTg4Wk0xNDYuMzQzIDQxLjk4NEMxNDUuNjc5IDQyLjI2NDUgMTQ0Ljk2OSA0Mi40MDQ4IDE0NC4yMTMgNDIuNDA0OEMxNDMuNDU4IDQyLjQwNDggMTQyLjc0NSA0Mi4yNjQ1IDE0Mi4wNzYgNDEuOTg0QzE0MS40MDYgNDEuNzAzNSAxNDAuODIyIDQxLjMxOTIgMTQwLjMyNCA0MC44MzFDMTM5LjgyNiA0MC4zNDMgMTM5LjQzNCAzOS43NzA3IDEzOS4xNDggMzkuMTE0M0MxMzguODYyIDM4LjQ1NzkgMTM4LjcxOSAzNy43NTk0IDEzOC43MTkgMzcuMDE4OEMxMzguNzE5IDM2LjI3ODIgMTM4Ljg2MiAzNS41ODI2IDEzOS4xNDggMzQuOTMxOEMxMzkuNDM0IDM0LjI4MSAxMzkuODI2IDMzLjcxMTUgMTQwLjMyNCAzMy4yMjM0QzE0MC44MjIgMzIuNzM1MyAxNDEuNDA2IDMyLjM0ODIgMTQyLjA3NiAzMi4wNjIxQzE0Mi43NDUgMzEuNzc1OSAxNDMuNDU4IDMxLjYzMjkgMTQ0LjIxMyAzMS42MzI5QzE0NC45NjkgMzEuNjMyOSAxNDUuNjc5IDMxLjc3NTkgMTQ2LjM0MyAzMi4wNjIxQzE0Ny4wMDcgMzIuMzQ4MiAxNDcuNTg4IDMyLjczNTMgMTQ4LjA4NiAzMy4yMjM0QzE0OC41ODQgMzMuNzExNSAxNDguOTc4IDM0LjI4MSAxNDkuMjcgMzQuOTMxOEMxNDkuNTYyIDM1LjU4MjYgMTQ5LjcwOCAzNi4yNzgyIDE0OS43MDggMzcuMDE4OEMxNDkuNzA4IDM3Ljc1OTQgMTQ5LjU2MiAzOC40NTc5IDE0OS4yNyAzOS4xMTQzQzE0OC45NzggMzkuNzcwNyAxNDguNTg0IDQwLjM0MjkgMTQ4LjA4NiA0MC44MzFDMTQ3LjU4OCA0MS4zMTkyIDE0Ny4wMDcgNDEuNzAzNSAxNDYuMzQzIDQxLjk4NFoiIGZpbGw9ImJsYWNrIi8+DQo8L2c+DQo8Y2lyY2xlIG9wYWNpdHk9IjAuMiIgY3g9IjEwMC40MDQiIGN5PSIzOS40MzQ4IiByPSIyLjA5NDY3IiB0cmFuc2Zvcm09InJvdGF0ZSgzIDEwMC40MDQgMzkuNDM0OCkiIGZpbGw9IiNERjZGOUUiLz4NCjxjaXJjbGUgb3BhY2l0eT0iMC4yIiBjeD0iOTkuNzUzMiIgY3k9IjUxLjg0ODkiIHI9IjIuMDk0NjciIHRyYW5zZm9ybT0icm90YXRlKDMgOTkuNzUzMiA1MS44NDg5KSIgZmlsbD0iI0RGNkY5RSIvPg0KPHBhdGggb3BhY2l0eT0iMC4yIiBkPSJNOTguODA0MSA2Ni40ODI3Qzk3LjY0ODkgNjYuNDIyMSA5Ni42NjMzIDY3LjMwOTYgOTYuNjAyNyA2OC40NjQ5Qzk2LjU5NTIgNjguNjA3NSA5Ni42MDIyIDY4Ljc0NzUgOTYuNjIyNCA2OC44ODM2TDEwMC42ODggNjcuOTMwMUMxMDAuNDI5IDY3LjEyNzkgOTkuNjk2MyA2Ni41Mjk0IDk4LjgwNDEgNjYuNDgyN1oiIGZpbGw9IiNERjZGOUUiLz4NCjxkZWZzPg0KPGNsaXBQYXRoIGlkPSJjbGlwMCI+DQo8cmVjdCB4PSIwLjkzMTgyNCIgeT0iMjYuMTEzMyIgd2lkdGg9IjEwMi41MzgiIGhlaWdodD0iNjMuODg3NiIgdHJhbnNmb3JtPSJyb3RhdGUoLTEzIDAuOTMxODI0IDI2LjExMzMpIiBmaWxsPSJ3aGl0ZSIvPg0KPC9jbGlwUGF0aD4NCjwvZGVmcz4NCjwvc3ZnPg0K"><p class="contentText-84">Audio transcripts aren't quite ready yet. Check back soon.</p></div><p id="screen-reader-only" role="alert" class="screenReader-63"></p></div></div></div><div aria-hidden="true" tabindex="-1" data-is-visible="true" style="pointer-events: none; position: fixed;"></div></div></div></div></div></div></div><div id="screenReaderMessageContainer" role="status" aria-live="polite" aria-atomic="true" style="width: 1px; height: 1px; margin: -1px; position: absolute;  border: 0; padding: 0px; overflow: hidden; clip: rect(0 0 0 0); clip-path: polygon(0px 0px, 0px 0px, 0px 0px); -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px); white-space: nowrap, opacity: 0; font-size: 0;">video paused</div><div style="width: 100%; height: 100%; left: 0px; top: 0px; position: absolute; z-index: 1; display: block; pointer-events: none;"><div class="overlayContainer-41"><div class="overlayBackplane-44"></div><div class="overlayHeading-45"><div class="videoInformation-46" role="region" aria-label="Video information"><a href="https://web.microsoftstream.com/video/044fd89c-e140-4145-b488-5e54cd1141a0" target="_blank" class="overlayTitle-47">Adding a Unity Project to GIT</a><div class="statisticsContainer-48"><span aria-label="73 views">73 views</span><span class="statisticSeparator-50">·</span><span aria-label="0 likes">0 likes</span><span class="statisticSeparator-50">·</span><span aria-label="0 comments">0 comments</span></div></div><div class="actionsContainer-51" role="region" aria-label="Video actions"><div role="status" aria-live="polite" aria-atomic="true" class="screenReaderMessage-40"></div><div class="ms-TooltipHost root-52"><button type="button" class="ms-Button ms-Button--icon root-53" aria-label="Like" data-is-focusable="true"><span class="ms-Button-flexContainer flexContainer-54" data-automationid="splitbuttonprimary"><i data-icon-name="FluentLike" role="presentation" aria-hidden="true" class="ms-Icon root-37 css-61 ms-Button-icon icon-56" style="font-family: azuremediaplayer;"></i></span></button></div><div role="status" aria-live="polite" aria-atomic="true" class="screenReaderMessage-40"></div><div class="ms-TooltipHost root-52"><button type="button" class="ms-Button ms-Button--icon root-53" aria-label="Add to watchlist" data-is-focusable="true"><span class="ms-Button-flexContainer flexContainer-54" data-automationid="splitbuttonprimary"><i data-icon-name="FluentAddToWatchlist" role="presentation" aria-hidden="true" class="ms-Icon root-37 css-61 ms-Button-icon icon-56" style="font-family: azuremediaplayer;"></i></span></button><div id="tooltip4" style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden;">Add to watchlist</div></div></div></div></div></div><div style="width: 100%; height: 100%; left: 0px; top: 0px; position: absolute; z-index: 1; display: block; pointer-events: none;"><span class="ms-layer"></span></div></div>
+
+    
+<script>
+    var portalConfiguration = {"EnableMockApiGateway":false,"AzureMediaPlayerVersion":"2.3.7.1","AzureMediaPlayerSource":"https://amsglob0cdnstream14.azureedge.net","PlayerMaxLogLines":500,"PlayerLiveInitTimeInMS":0,"TenantServiceApiVersion":"1.4-private","TenantServiceUri":"https://api.microsoftstream.com","AriaConfiguration":{"IngestionKey":"5676a47d49c24a4f9b809ab5c1a7c974-02fe5880-a0e2-4871-8fd9-1c0f507638f4-7186","OverrideEndpointUrl":""},"StreamWebAriaConfiguration":{"IngestionKey":"208caf6a38a844be84e1d2fc006f4194-637e5642-6b50-4c3b-b170-5da3f69c22c8-7658","OverrideEndpointUrl":""},"VideoEditorConfiguration":{"AriaConfiguration":{"IngestionKey":"436da2befff94520859b4b2793ca80ef-fc7a86c2-1fd3-440a-b8af-eb3f74a55a46-7604","OverrideEndpointUrl":""},"DisabledBrowsersAndDevices":["osName:windows;osVersion:7;browserName:ie;browserVersion:11;browserVersionOperator:lessThanOrEqual","osName:windows;osVersion:vista;browserName:ie;browserVersion:11;browserVersionOperator:lessThanOrEqual","browserName:ie;browserVersion:11;browserVersionOperator:lessThan","browserName:firefox;browserVersion:42;browserVersionOperator:lessThanOrEqual","deviceType:mobile","deviceType:tablet;deviceModel:ipad"]},"PetrolApiEndpoint":"https://petrol.office.microsoft.com/v1","LocalyticsConfiguration":{"instrumentationKey":"e4548db2f0c41dcb4775c5a-e8012354-13dd-11e6-8408-0086bc74ca0f"},"BuildNumber":"1.0.3633.9","RingNumber":"2","ClusterName":"uswe1","StaticContentLocation":"https://amsglob0cdnstream13.azureedge.net","StaticContentLocations":["https://amsglob0cdnstream13.azureedge.net","https://amsusct1stostream11.blob.core.windows.net","https://ams-uswe-1-hos-barcelonaportal-1-1.cloudapp.net"],"StaticContentContainer":"1-0-3633-9","MaxStaticContentRetries":3,"ScreenRecorderInstallerPaths":"","HowToVideosUri":"https://amsglob0cdnstream13.azureedge.net/static/howtovideosv4.json","PartnerBinariesUri":"https://amsglob0cdnstream14.azureedge.net","SDNNamesWithVersions":"hive/Hive streaming/hive/7.1.0,kollective/Kollective/kollectiveSDN/2.5.3,ramp/Ramp/RampMOPlugin/2.6.13.1,riverbed/Riverbed/kollectiveSDN/2.5.3","EnabledEncoders":"kbencoder,makitox,streamsrt,switcherstudio,wirecast,wirecasts","FeatureFlags":"TrialExperience,AdminSettingsV2,AdminSettingsSpotlight,DataUsageNotifications,TranscriptEdit,EmptyNonceThrottler,EndOfTrialBar,EndOfTrialDialog,TeamsTokenSSO,ForgottenUsers,PersonalData,GroupSpotlight,LocalGroups,TokenSSOPostMessage,EmbedSearch,NewNotifications,EnableCEACaptions,VerboseLogs,PlayerRetry,EncoderSetupV2,CreateLive,LiveEventAdminSetting,PlaybackQualityMonitoring,NetworkCaching,TokenMonitor,GroupInAdminMode,RemoveResourceParameter,NewSignUpRedirect,DisableIEPreload,OfficeVideoMigration,P3PHeader,LiveGA,TranscriptEditNewButtons,TranscriptEditV3,DefaultPrivacyModeTenantSetting,Forms,FormsTab,ForceHLSv3,HLSToOrigin,RecycleBin,RecycleBinAdminSettings,RemoveHelpLinks,SortByName,SetDefaultSortOptionChannels,RecycleBinSearch","ECSConfiguration":{"agents":["MicrosoftStream","Segmentation"],"settings":{
+  "MicrosoftStream": {
+    "DisplayDurationSortingFilter": true,
+    "DisplayEmptyRecycleBinExperience": true,
+    "DisplayEmptyRecycleBinAdminDeletedVideosOnly": true,
+    "AmpVersion": "2.3.7.1",
+    "abcd": 9999,
+    "MixMicAndSystemAudio": true,
+    "IsEnvSpecificLokiEndpointEnabled": true,
+    "TrimRecording": true,
+    "ThinEmbed": true,
+    "ThinEmbedRedirectCacheLifeHours": 24,
+    "WebcamRecording": true,
+    "StreamOnlyGroupEmptyContributor": true,
+    "BotConnectorOnly": true,
+    "DisableAutoSearchForGroups": true,
+    "DefaultShareWithVideoDropDownOptionPeople": true,
+    "EnableShowMoreOption": true,
+    "EndOfResultSet": true,
+    "FetchMoreGroups": true,
+    "IncreaseGroupSearchInputTimeInterval": true,
+    "IsTenantPatchThrottledOnPortal": true,
+    "IsTenantPatchThrottledOnEmbed": true,
+    "IsWaitingRoom503ErrorEnabled": true,
+    "WaitingRoomRetryIntervalMs": 10000,
+    "RingId": 4,
+    "AudienceGroup": "Production",
+    "Audience": "Production",
+    "AllowTenantPatchBackgroundUserSync": "true",
+    "AudioEnhancementUI": true,
+    "AudioEnhancementFirstRunExperience": true,
+    "DefaultAudioTrackIsEnhanced": true,
+    "ReactMemberList": true,
+    "ReactMemberListForStreamGroups": true,
+    "ShareableGroupCRUDControl": true,
+    "EmbedVideoAdalAuth": true,
+    "EmbedVideoAdalRedirect": true,
+    "EmbedVideoAdalRedirectCacheLifeHours": 24,
+    "EmailEnabled": true,
+    "AudioOnlyModeKillSwitch": false,
+    "SortByName": true,
+    "SetDefaultSortOptionChannels": true,
+    "ForceHLSv3": true,
+    "HLSToOrigin": true,
+    "DisableFaceDetection": "true",
+    "UserTextTrackSettings": true,
+    "NoRenewTokenOnSignInKillSwitch": true,
+    "EnableCookieSameSiteNone": true,
+    "SDNNamesWithVersions": "hive/Hive streaming/hive/7.1.0,kollective/Kollective/kollectiveSDN/2.5.3,ramp/Ramp/RampMOPlugin/2.6.13.1,riverbed/Riverbed/kollectiveSDN/2.5.3",
+    "RecycleBinAdminSettings": true,
+    "ReplaceVideo": true,
+    "BotFramework": true
+  },
+  "Segmentation": {
+    "Ring": "General Public"
+  },
+  "ConfigIDs": {
+    "MicrosoftStream": "P-R-96835-12-4,P-R-93870-1-7,P-R-79376-1-7,P-R-79369-1-2,P-R-70265-12-10,P-R-70689-12-6,P-R-64587-6-7,P-R-65195-12-12,P-R-64554-6-9,P-R-60565-6-6,P-R-60231-6-4,P-R-60168-6-5,P-R-59609-6-8,P-R-55665-6-17,P-R-54041-5-4,P-R-54086-7-15,P-R-52719-14-10,P-R-52484-2-5,P-R-51905-6-41,P-R-42994-6-18,P-R-42394-2-3,P-D-95102-6-1,P-D-79368-1-2,P-D-63747-1-5,P-D-61515-4-2,P-D-61514-4-2,P-D-59303-1-2,P-D-58919-4-2,P-D-55209-1-2,P-D-51046-4-16,P-D-50815-1-2,P-D-49695-3-58,P-D-49279-1-4,P-D-46739-1-4,P-D-45695-1-6",
+    "Segmentation": "P-R-28537-4-11"
+  }
+},"telemetryRecord":{"filters":{"clientversion":"1.0.3633.9","clientid":"37e9c8c0-dd9e-4653-9ffa-3525ad7b584a","WebPlayerVersion":"2.3.11.2","Environment":"Production","ServiceRegion":null,"Cluster":"uswe1","Controller":"Embed","Language":"en"},"configIds":{"0":"P-R-96835-12-4,P-R-93870-1-7,P-R-79376-1-7,P-R-79369-1-2,P-R-70265-12-10,P-R-70689-12-6,P-R-64587-6-7,P-R-65195-12-12,P-R-64554-6-9,P-R-60565-6-6,P-R-60231-6-4,P-R-60168-6-5,P-R-59609-6-8,P-R-55665-6-17,P-R-54041-5-4,P-R-54086-7-15,P-R-52719-14-10,P-R-52484-2-5,P-R-51905-6-41,P-R-42994-6-18,P-R-42394-2-3,P-D-95102-6-1,P-D-79368-1-2,P-D-63747-1-5,P-D-61515-4-2,P-D-61514-4-2,P-D-59303-1-2,P-D-58919-4-2,P-D-55209-1-2,P-D-51046-4-16,P-D-50815-1-2,P-D-49695-3-58,P-D-49279-1-4,P-D-46739-1-4,P-D-45695-1-6","1":"P-R-28537-4-11"},"ring":"General Public","eTag":"\"afBcZFFb6p3TlNJhc3WsloI8GsCTz6+WjZCY6LEzhNU=\"","ecsWebRoleFrameworkVersion":2.0,"audience":"Production","audienceGroup":"Production","ringId":4},"hasUserContext":false},"IsDevelopmentMode":false,"SupportedLanguages":["en","ar","eu","bg","ca","zh-hans","zh-hant","hr","cs","da","nl","et","fi","fr","gl","de","el","he","hi","hu","id","it","ja","kk","ko","lv","lt","ms","nb","pl","pt-br","pt-pt","ro","ru","sr-cyrl-rs","sr-latn-rs","sk","sl","es","sv","th","tr","uk","vi"],"RTLLanguages":["ar","he"],"StreamTrialServicePlan":"microsoftstream","PlaybackLoadTimeThreshold":20000,"PlaybackBufferCountThreshold":3,"PlaybackFailedDownloadCountThreshold":2,"PreloadBrowsersWithOS":"Windows NT 6.1-Trident","AadInstance":"https://login.microsoftonline.com/","AadClientId":"cf53fce8-def6-4aeb-8d30-b158e7b1cf83","AadResourceId":"https://*.microsoftstream.com","LocalesWMFResouceMap":{"en":"west-european","ar":"arabic","eu":"west-european","bg":"cyrillic","ca":"west-european","zh-hans":"chinese-simplified","zh-hant":"chinese-traditional","hr":"east-european","cs":"east-european","da":"west-european","nl":"west-european","et":"east-european","fi":"west-european","fr":"west-european","gl":"west-european","de":"west-european","el":"greek","he":"hebrew","hi":"indian","hu":"east-european","id":"west-european","it":"west-european","ja":"japanese","kk":"cyrillic","ko":"korean","lv":"east-european","lt":"east-european","ms":"west-european","nb":"west-european","pl":"east-european","pt-br":"west-european","pt-pt":"west-european","ro":"east-european","ru":"cyrillic","sr-cyrl-rs":"cyrillic","sr-latn-rs":"cyrillic","sk":"east-european","sl":"east-european","es":"west-european","sv":"west-european","th":"thai","tr":"east-european","uk":"cyrillic","vi":"vietnamese"},"ShareToTeamsSdkUrl":"https://teams.microsoft.com/share/launcher.js","DefaultTeamsSdkVersion":"v1.5.2","ShareToYammerSdkUrl":"https://s0.assets-yammer.com/assets/platform_social_buttons.min.js","TenantFilterEnabled":true,"TenantFilterRedirectUrl":"https://msit.microsoftstream.com","AllowedTenants":[],"DisallowedTenants":["72f988bf-86f1-41af-91ab-2d7cd011db47","884422b7-2edd-45d2-868d-62e371e3e053","a6a5b080-27ff-4379-9dbd-ea2e3c4f9711","e3c0604c-cf57-48cb-ab70-67d42b54abfd","61df5f6e-15cb-43d2-a973-0a5f09bf4cf4","d3dbd761-8100-40da-b50c-ebacec8ea3a6","8688c074-5932-430f-b4be-6e4ac27cb74d","545417ea-4468-4f57-bf8f-434e06f442d1","ec8ece9f-195a-412b-bb24-d95b59b8a762","a3d63459-e6f0-4d81-9f57-e75fa648deb9","cb2025e1-2bea-4556-9ae9-9b9edaa5d3b8","9b29b91a-ea4b-4c0e-8560-8e6a4b0588ff","5d82a581-9b76-4a6d-99d5-53cb6db937a9","27316cae-8af5-4442-b664-501c5000ba34","55a59508-c1e1-442a-adbf-e422384fc2c7","f93826a9-fe56-43f5-acd5-01d6f65bb6f9","cafa0df9-078f-4ec3-84d3-c742f9f102f5","9a118241-a768-495f-9bd5-9b2d2a272348","9a2dfce3-b8b3-43c0-b1b4-e8580ee12722","f0ffe906-34c8-4914-8513-905ae519c4b2","8df6ecd6-6de3-41be-9abf-4b71c547d62e","7d5e4aba-b8e2-45ba-adc7-a905919bf8c3","a6029c78-1f4f-4d61-8b32-3f3b2be39f06","a7483178-abac-42bb-b157-3aeddcd55dbd","1a113a22-3e24-430a-b2e6-1949545e0f2c","13c8f600-2d9e-4826-af11-2a101adcd4d4","c0e48be7-a6ec-4c57-9c52-78e203250d9a","fd871413-ce27-43b9-a4d3-5899d261ff54"],"UserFeedbackSupportedDataLocations":["asia pacific","european union","united states","united kingdom","india","australia","south america","japan","canada"],"VideoEditorDisabledBrowsersAndDevices":null,"PrivacyScrubbingConfiguration":{"DropEventNames":[],"EventFieldsDictionary":{},"GlobalFieldsDictionary":{"url":"scrub","pageUrl":"scrub","domain":"scrub","trafficReferrer":"scrub","app":"scrub","viewContext":[{"FullPath":"viewContext.url","Strategy":"scrub"}]},"PassThroughTokens":["spo","spo-app-ios","microsoftteams","yammer","onenote","powerpoint","ppt","sbc","stream portal","stream embed","msteams","msteamsbot","email","word","forms","sway"],"ScrubQueryParametersHostNames":["microsoftstream.com","microsoftstream.us","stream.azure-test.net","hos-barcelonaportal-1-1.cloudapp.net"],"ScrubToPartialHostNames":["sharepoint.com","sharepoint-df.com","teams.microsoft.com","signup.microsoft.com","learn.microsoft.com","microsoft.com","hubblecontent.osi.office.net","sway.office.com","streamrecommendation.delve.office.com","streamrecommendation.office.com","delve.office.com","forms.office.com","tasks.office.com","outlook.office.com","outlook-sdf.office.com","office.com","yammer.com","onenote.officeapps.live.com","powerpoint.officeapps.live.com","officeapps.live.com","botframework.com"],"UriQueryParameters":{"PassThroughQueryParameters":["adminMode","appcorrelation","appplatform","autoPlay","BrowseBack","channelId","mode","displaymode","entryPoint","hasPlayed","isInAdminMode","isInDevMode","isInVideoTrimMode","noSignUpCheck","popular","privacy","recommendationVer","refId","showdescription","showheader","showscreenrecorder","signout","sort","srcScreen","st","top","uploadstatus","vid","videoId","videoIsPublished","videoPrivacy"],"ScrubQueryParameters":{"App":{"type":"string","acceptedValues":["spo","spo-app-ios","microsoftteams","yammer","onenote","powerpoint","ppt","sbc","stream portal","stream embed","msteams","msteamsbot","email","word","forms","sway"]},"ChannelName":null,"ErrorRedirectedFrom":null,"fileName":null,"List":null,"open":null,"referrer":null,"refType":{"type":"string","acceptedValues":["emailTrialAlmostOver","emailTrialComplete","emailPortalVideoReady","emailTeamsCreatorVideoReady","emailTeamsAttendeeVideoReady","emailVideoError","emailShared"]},"Scope":null,"SearchTerm":null,"SearchTermLongKey":null,"Search":null,"Source":null,"State":null,"src":null,"UserId":null,"UserName":null,"view":{"type":"string","acceptedValues":["video","channel","people","highlights","videos","channels","membership","userchannels","uservideos","administrators","spotlightvideos","companypolicies","usagedetails","group","support","comments","facedetection","forgottenusers","personaldata","contentcreation","streamaccess","liveevents","networkcaching","recyclebin","browsechannels","groupchannels","browsegroups","browsevideos","grouphome","groupvideos","groupprincipals"]}}}},"EnableQueryStringOverrides":false};
+    var sessionInfo = {"UserClaim":null,"SessionId":"37e9c8c0-dd9e-4653-9ffa-3525ad7b584a","ServerTime":"2022-02-03T19:21:25Z","AccessToken":null,"AccessTokenExpiry":"","UserRegion":null,"DataLocation":null,"UserLanguage":null,"ApiGatewayUri":null,"ApiGatewayVersion":null,"NotificationEndPoint":null,"ServiceRegion":null,"IsRightToLeft":false,"LCID":null,"ClientSessionId":null,"ServicePlanForTelemetry":null,"PrincipalInfo":null,"OfficeVideoApiUri":null,"OfficeVideoApiVersion":"3.0","ClientAppId":"cf53fce8-def6-4aeb-8d30-b158e7b1cf83","PrincipalId":"","ReferrerUrl":"https://uvu.instructure.com/courses/539828/assignments/6077384?return_to=https%3A%2F%2Fuvu.instructure.com%2Fcalendar%23view_name%3Dmonth%26view_start%3D2022-02-03","LokiToken":"","LokiTokenExpiry":"","MSGraphToken":"","MSGraphTokenExpiry":""};
+    sessionInfo.ClientSessionId = '334fe739-d9ba-4dfa-8844-e5cbe66c6434';
+    sessionInfo.IsEmbed = true;
+    sessionInfo.IsAdalAuth = true;
+</script>
+
+    <script>
+        sessionInfo.AntiForgeryToken = 'ZqRm8PyBmYiiZs4qya8LNEmMjHoJ8FaeZrKJjPgZibWM6_DzuUNJnqt3O2Z2XfJ2ZtsO6JXl2FavomutvVdZtufOUzQ1:B1z0zUSmRMVkS5Wi1ATyRJWdcI6bNJAWpinjG63TZzr6PYSWJzDNIrB1eIuU0QILW2IMqj79t8HSguxSM03yiyOGxr81';
+    </script>
+
+
+    <script>
+    window.performance = window.performance || {};
+    performance.now = (function () {
+        return performance.now ||
+            performance.mozNow ||
+            performance.msNow ||
+            performance.oNow ||
+            performance.webkitNow ||
+            Date.now || function () {  /*none found - fallback to browser default */
+                return new Date().getTime();
+            };
+    })();
+    var perfStats = { headStart: performance.now() };
+    var staticContentLocations = portalConfiguration.StaticContentLocations;
+    var staticContentLocation = portalConfiguration.StaticContentLocation;
+    var staticContentContainer = portalConfiguration.StaticContentContainer;
+    var streamFullStaticPath = staticContentLocation + "/" + staticContentContainer + "/";
+    var maxRetries = portalConfiguration.MaxStaticContentRetries;
+    var buildNumber = portalConfiguration.BuildNumber;
+    var retryLoad = function(obj, filePath) {
+        // don't have access to portal configuation object here.
+
+        var retryCount = obj.getAttribute("retry");
+        if (!retryCount && retryCount !== 0) {
+            /* object doesn't have an attribute set, so this is the first
+               retry attempt */
+            retryCount = -1;
+        }
+
+        retryCount++;
+
+        var idx = Math.min(staticContentLocations.length - 1, retryCount);
+        var url = staticContentLocations[idx];
+
+        if (!url) {
+            if (staticContentLocation) {
+                url = staticContentLocation;
+            }
+        }
+
+        // don't bother if we have an invalid domain or an epic fail
+        if (!url || retryCount > maxRetries) {
+            obj.parentElement.removeChild(obj);
+            return;
+        }
+
+        if (url.indexOf(".cloudapp.net") >= 0) {
+            // talk directly to server
+            url = url + '/' + buildNumber + '/' + filePath;
+        } else {
+            url = url + '/' + staticContentContainer + '/' + filePath;
+        }
+
+        var newObj = document.createElement(obj.tagName.toLowerCase());
+
+        if (obj.getAttribute("href")) {
+            newObj.setAttribute("href", url);
+        } else if (obj.getAttribute("src")) {
+            newObj.setAttribute("src", url);
+        }
+
+        var relValue = obj.getAttribute("rel");
+        if (relValue) {
+            newObj.setAttribute("rel", relValue);
+        }
+
+        newObj.setAttribute("onerror", obj.getAttribute("onerror"));
+        newObj.setAttribute("onload", obj.getAttribute("onload"));
+
+        /* retry counter is an attribute for each DOM object being retried
+           so we don't need guards, even though multiple downloads
+           could be in-flight at the same time */
+        newObj.setAttribute("retry", retryCount);
+
+        obj.parentElement.removeChild(obj);
+        document.head.appendChild(newObj);
+    }
+    var markAsSucceeded = function(obj) {
+        /* TODO: Implement fastfail to optimize failover perf */
+        obj.setAttribute("loaded", true);
+    }
+    var loadSprite = function(obj, isDevMode, path) {
+        var processSprite = function(data) {
+            var div = document.createElement("div");
+            div.id = "svgStoreEleId";
+            div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+            document.head.insertBefore(div, document.head.childNodes[0]);
+        }
+
+        var retryCount = 0;
+        var retryVal = obj.getAttribute("retry");
+        if (retryVal) {
+            retryCount = parseInt(retryVal);
+        }
+
+        var spriteUrl = "";
+        if (isDevMode) {
+            spriteUrl = '/' + buildNumber + '/' + path;
+        } else {
+            if (retryCount === staticContentLocations.length - 1) {
+                spriteUrl = staticContentLocations[retryCount] + '/' + buildNumber + '/' + path;
+            } else {
+                spriteUrl = staticContentLocations[retryCount] + '/' + staticContentContainer + '/' + path;
+            }
+        }
+
+        var fetchSprite = function (spriteUrl, processSprite) {
+            /* we call this after the externals script file is
+               successfully downloaded by the client, so jQuery is
+               available when we get here */
+
+            if (!window.jQuery) {
+                var request = new XMLHttpRequest();
+                request.open('GET', spriteUrl, true);
+
+                request.onload = function () {
+                    if (this.status >= 200 && this.status < 400) {
+                        // Success!
+                        processSprite(this.responseXML);
+                    } else {
+                        // We reached our target server, but it returned an error
+
+                    }
+                };
+
+                request.onerror = function () {
+                    // There was a connection error of some sort
+                };
+
+                request.send();
+            } else {
+                $.get(spriteUrl, processSprite);
+            }
+
+        }
+
+        fetchSprite(spriteUrl, processSprite);
+    };
+
+</script>
+
+
+    <script>
+        sessionInfo.TenantedAuth = false;
+        sessionInfo.MarketingPageUrl = true
+            ? 'https://products.office.com/microsoft-stream'
+            : 'https://stream.microsoft.com?utm_source=microsoftstream&utm_medium=player&utm_campaign=embed&ru={0}';
+
+        var playButtonAlreadyClicked = false;
+        document.getElementById('playButtonContainer').onclick = function() {
+            if (!playButtonAlreadyClicked) {
+                performance.mark('MsToVideoStart');
+                playButtonAlreadyClicked = true;
+            }
+            document.getElementById('streamLoading').style.display = "flex";
+            document.getElementById('playButtonContainer').style.display = "none";
+        };
+
+        function showBrowserError() {
+            document.getElementById('streamLoading').style.display = "none";
+            document.getElementById('playButtonContainer').style.display = "none";
+            document.getElementById('browserError').style.display = "block";
+        }
+
+        function showCompatibilityError() {
+            document.getElementById('streamLoading').style.display = "none";
+            document.getElementById('playButtonContainer').style.display = "none";
+            document.getElementById('CompatibilityViewError').style.display = "block";
+        }
+
+        function isUnsupportedBrowser() {
+            var trident = navigator.userAgent.match(/Trident\/(\d+)/);
+            if (trident) {
+                var trueVersion = parseInt(trident[1], 10) + 4;
+
+                return trueVersion < 10;
+            }
+
+            return false;
+        }
+
+             var queryParamApp = '';
+             var queryParamPlatform = '';
+        function isCompatibilityMode() {
+            var msie = navigator.userAgent.match(/MSIE (\d+)/);
+            var ie11 = navigator.userAgent.indexOf('Trident/7.0') > -1;
+            if (ie11 && msie) {
+                var actingVersion = parseInt(msie[1]);
+                if (actingVersion < 10) {
+                    if (queryParamApp === "PowerPoint" && queryParamPlatform === "Win32" && document.compatMode === "CSS1Compat")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        if (!false && isUnsupportedBrowser()) {
+            showBrowserError();
+        } else if (!false && isCompatibilityMode()) {
+            showCompatibilityError();
+        } else {
+            window.shouldRenderEmbed = true;
+        }
+    </script>
+      <script>
+        streamFullStaticPath = 'https://amsglob0cdnstream13.azureedge.net/embed/7.0.4/production/';
+      </script>
+      <script id="resourcesScriptId" src="./ClientResources.js.download"></script>
+      <script src="./thinbundle.js.download"></script>
+      <script src="./floodgateWrapper.min.js.download" async="">
+</body>
+</html></script><script type="text/javascript" async="" src="./streamPostMessage.min.js.download"></script><script type="text/javascript" async="" src="./azuremediaplayer.thin.min.js.download" crossorigin="anonymous"></script><iframe id="adalRenewFramehttps://*.microsoftstream.com" aria-hidden="true" src="./authorize.html" style="visibility: hidden; position: absolute; height: 0px; width: 0px;"></iframe></body></html>
